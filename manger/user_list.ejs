@@ -1,0 +1,132 @@
+<% include inc/head2 %>
+<% include inc/top %>
+<% include inc/left %>
+
+
+ <div id="grid"></div>
+
+<script>
+ $(function () {
+	 
+                var DataHost = window.DataHost,
+                    dataSource = new kendo.data.DataSource({
+                        transport: {
+                            read:  {
+                                url: DataHost + "/manger/user/read",
+                                type: "post"
+                            },
+                             create: {
+                                url: DataHost + "/manger/user/create",
+                                type: "post"
+                            },
+                            parameterMap: function(options, operation) {
+
+								if(operation === 'read' && options.filter){
+                                	return {models:kendo.stringify(options.filter.filters)};
+                                }
+                                if (operation !== "read" && options.models) {
+                                    return {models: kendo.stringify(options.models)};
+                                }
+
+
+                            }
+                        },
+                        batch: true,
+                        pageSize: 20,
+                        serverFiltering:true,
+                        filter: { logic: "and", filters: [ 
+		                        { field: "_id", operator: "filter", value: "" },
+		                        { field: "Mobile", operator: "filter", value: "" },
+		                        { field: "Name", operator: "filter", value: "" },
+		                        { field: "RegIp", operator: "filter", value: "" },
+		                        { field: "RegTime", operator: "filter", value: "" },
+		                        { field: "LoginTimes", operator: "filter", value: "" },
+		                        { field: "Agent", operator: "filter", value: "" },
+		                        { field: "LastLoginTIme", operator: "filter", value: "" },
+                         ] },
+                        schema: {
+                            model: {
+                                fields: {
+                                    "_id": { editable: false },
+                                    "Mobile": { type: "number", validation: { required: true}  },
+                                    "Name": { validation: { required: true} },
+									"RegIp":{editable: false },
+                                    "RegTime": {editable: false },
+                                    "LoginTimes": {editable: false },
+                                    "Agent":{editable: false },
+									"LastLoginTIme":{ editable: false },
+                                }
+                            }
+                        }
+                    });
+
+                $("#grid").kendoGrid({
+                    dataSource: dataSource,
+                    navigatable: true,
+                    pageable: true,
+                    height: 500,
+                    toolbar: [    
+					    { name: "create" },
+					    { name: "save" }
+					],
+                    columns: [
+                        { 
+							field: "_id",
+							title: "用户id", 
+						},
+						{ 
+							field: "Mobile",
+							title: "手机号", 
+						},
+						{ 
+							field: "Name",
+							title: "姓名", 
+						},
+						{ 
+							field: "RegIp",
+							title: "注册ip" 
+						},
+						{ 
+							field: "RegTime",
+							title: "注册日期"
+						},
+						{ 
+							field: "LoginTimes",
+							title: "登录次数"
+						},
+						{ 
+							field: "Agent",
+							title: "用户设备"
+						},
+						{ 
+							field: "LastLoginTIme",
+							title: "上次登录时间",
+						},
+                        { 
+							command: "destroy", 
+							title: "删除" 
+						}],
+                    editable: true,
+                    filterable:true,
+                    remove: function(e) {
+                    		console.log(e.model)
+					    $.post(DataHost + "/manger/user/destory", {_id:e.model._id},function(d){
+					    	if(d.error) return alert(d.error);
+					    	alert('ok')
+					    },'json')
+					},
+					save: function(e) {
+                    	if(e.model._id){
+                    		e.values._id = e.model._id;
+                    		$.post(DataHost + "/manger/user/update", {models:JSON.stringify([e.values])}, function(d){
+						    	if(d.error) return alert(d.error);
+						    	alert('ok')
+					   		},'json')
+                    	}
+					},				
+                });
+									
+});
+
+</script>
+<% include inc/foot %>

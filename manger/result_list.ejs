@@ -1,0 +1,147 @@
+<% include inc/head2 %>
+<% include inc/top %>
+<% include inc/left %>
+
+
+ <div id="grid"></div>
+
+<script>
+ $(function () {
+	 
+                var DataHost = window.DataHost,
+                    dataSource = new kendo.data.DataSource({
+                        transport: {
+                            read:  {
+                                url: DataHost + "/manger/result/read",
+                                type: "post"
+                            },
+                            parameterMap: function(options, operation) {
+
+								if(operation === 'read' && options.filter){
+                                	return {models:kendo.stringify(options.filter.filters)};
+                                }
+                                if (operation !== "read" && options.models) {
+                                    return {models: kendo.stringify(options.models)};
+                                }
+
+
+                            }
+                        },
+                        batch: true,
+                        pageSize: 20,
+                        serverFiltering:true,
+                        filter: { logic: "and", filters: [ 
+		                        { field: "_id", operator: "filter", value: "" },
+		                        { field: "Mobile", operator: "filter", value: "" },
+		                        { field: "Name", operator: "filter", value: "" },
+		                        { field: "UserId", operator: "filter", value: "" },
+		                        { field: "Ip", operator: "filter", value: "" },
+		                        { field: "Status", operator: "filter", value: "" },
+		                        { field: "StartTime", operator: "filter", value: "" },
+		                        { field: "EndTime", operator: "filter", value: "" },
+		                        { field: "Score", operator: "filter", value: "" },
+		                        { field: "RTypeId", operator: "filter", value: "" },
+                         ] },
+                        schema: {
+                            model: {
+                                fields: {
+                                    "_id": { editable: false },
+                                    "Mobile": { editable: true  },
+                                    "Name": { editable: true},
+									"UserId":{editable: true },
+                                    "Ip": {editable: true },
+                                    "Status": {editable: true },
+									"StartTime":{ editable: true },
+									"EndTime":{ editable: true },
+									"Score":{ editable: true },
+									"Detail":{ editable: false },
+									"RTypeId":{ editable: true },
+                                }
+                            }
+                        }
+                    });
+
+                $("#grid").kendoGrid({
+                    dataSource: dataSource,
+                    navigatable: true,
+                    pageable: true,
+                    height: 500,
+                    toolbar: [],
+                    columns: [
+                        { 
+							field: "_id",
+							title: "结果id", 
+						},
+						{ 
+							field: "Mobile",
+							title: "手机号", 
+						},
+						{ 
+							field: "Name",
+							title: "姓名", 
+						},
+						{ 
+							field: "UserId",
+							title: "用户id" 
+						},
+						{ 
+							field: "Ip",
+							title: "答题ip"
+						},
+						{ 
+							field: "Status",
+							title: "结果状态"
+						},
+						{ 
+							field: "StartTime",
+							title: "开始时间",
+						},
+						{ 
+							field: "EndTime",
+							title: "结束时间",
+						},
+						{ 
+							field: "StartTime",
+							title: "开始时间",
+						},
+						{ 
+							field: "Score",
+							title: "得分",
+						},
+						{ 
+							field: "Detail",
+							title: "详细情况",
+							template: '#= kendo.toString(Detail)#'
+						},
+						{ 
+							field: "RTypeId",
+							title: "所属类型",
+						},
+                        { 
+							command: "destroy", 
+							title: "删除" 
+						}],
+                    editable: true,
+                    filterable:true,
+                    remove: function(e) {
+
+					    $.post(DataHost + "/manger/result/destory", {_id:e.model._id},function(d){
+					    	if(d.error) return alert(d.error);
+					    	alert('ok')
+					    },'json')
+					},
+					save: function(e) {
+                    	if(e.model._id){
+                    		e.values._id = e.model._id;
+                    		$.post(DataHost + "/manger/result/update", {models:JSON.stringify([e.values])}, function(d){
+						    	if(d.error) return alert(d.error);
+						    	alert('ok')
+					   		},'json')
+                    	}
+					},				
+                });
+									
+});
+
+</script>
+<% include inc/foot %>

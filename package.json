@@ -1,0 +1,33 @@
+{
+  "author": {
+    "name": "doublespout",
+    "email": "snoopyxdy@163.com",
+    "url": "http://snoopyxdy.blog.163.com"
+  },
+  "name": "riddle",
+  "description": "nodejs picture riddle",
+  "keywords": [
+    "node",
+    "riddle"
+  ],
+  "version": "0.1.0",
+  "url": "https://github.com/DoubleSpout/picture_riddle_game",
+  "homepage": "https://github.com/DoubleSpout/picture_riddle_game",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DoubleSpout/picture_riddle_game.git"
+  },
+  "main": "index.js",
+  "engines": {
+    "node":">=0.10.0"
+  },
+  "dependencies":{
+       "async":"0.2.9",
+       "log4js":"0.6.6",
+       "ejs":"0.8.4",
+       "express":"3.3.3",
+       "ifile":"0.3.2",
+       "iroute":"0.3.1",
+       "mongoose":"3.6.13"
+  }
+}

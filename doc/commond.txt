@@ -1,0 +1,2 @@
+﻿c:\mongodb-win32-x86_64-2.4.5\bin\mongod.exe --dbpath f:\mongo_datebase --auth
+c:\mongodb-win32-x86_64-2.4.5\bin\mongod.exe  --dbpath f:\mongo_datebase\ --auth

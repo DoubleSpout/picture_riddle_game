@@ -1,0 +1,131 @@
+<% include inc/head2 %>
+<% include inc/top %>
+<% include inc/left %>
+
+
+ <div id="grid"></div>
+
+<script>
+ $(function () {
+	 
+                var DataHost = window.DataHost,
+                    dataSource = new kendo.data.DataSource({
+                        transport: {
+                            read:  {
+                                url: DataHost + "/manger/rank/read",
+                                type: "post"
+                            },
+                            parameterMap: function(options, operation) {
+
+								if(operation === 'read' && options.filter){
+                                	return {models:kendo.stringify(options.filter.filters)};
+                                }
+                                if (operation !== "read" && options.models) {
+                                    return {models: kendo.stringify(options.models)};
+                                }
+
+
+                            }
+                        },
+                        batch: true,
+                        pageSize: 20,
+                        serverFiltering:true,
+                        filter: { logic: "and", filters: [ 
+		                        { field: "_id", operator: "filter", value: "" },
+		                        { field: "ResultId", operator: "filter", value: "" },
+		                        { field: "Mobile", operator: "filter", value: "" },
+		                        { field: "Name", operator: "filter", value: "" },
+		                        { field: "Score", operator: "filter", value: "" },
+		                        { field: "Time", operator: "filter", value: "" },
+		                        { field: "RTypeId", operator: "filter", value: "" },
+                                { field: "IsCheet", operator: "filter", value: "" },
+                                { field: "InputTime", operator: "filter", value: "" },
+                         ] },
+                        schema: {
+                            model: {
+                                fields: {
+                                    "_id": { editable: false },
+                                    "ResultId": {editable: false },
+                                    "Mobile": { editable: false },
+									"Name":{editable: false },
+                                    "Score": {editable: true },
+                                    "Time": {editable: false },
+									"RTypeId":{ editable: false },
+                                    "IsCheet":{ editable: true },
+                                    "InputTime":{ editable: false },
+                                }
+                            }
+                        }
+                    });
+
+                $("#grid").kendoGrid({
+                    dataSource: dataSource,
+                    navigatable: true,
+                    pageable: true,
+                    height: 500,
+                    toolbar: [],
+                    columns: [
+                        { 
+							field: "_id",
+							title: "排行id", 
+						},
+						{ 
+							field: "ResultId",
+							title: "答题ID", 
+						},
+						{ 
+							field: "Mobile",
+							title: "手机号", 
+						},
+						{ 
+							field: "Name",
+							title: "姓名" 
+						},
+						{ 
+							field: "Score",
+							title: "答题秒数"
+						},
+						{ 
+							field: "Time",
+							title: "答题日期"
+						},
+						{ 
+							field: "RTypeId",
+							title: "答题类型",
+						},
+                        { 
+                            field: "IsCheet",
+                            title: "是否作弊",
+                        },
+                        { 
+                            field: "InputTime",
+                            title: "更新时间",
+                        },
+                        { 
+							command: "destroy", 
+							title: "删除" 
+						}],
+                    editable: true,
+                    filterable:true,
+                    remove: function(e) {
+
+					    $.post(DataHost + "/manger/rank/destory", {_id:e.model._id},function(d){
+					    	if(d.error) return alert(d.error);
+					    	alert('ok')
+					    },'json')
+					},
+					save: function(e) {
+                    	if(e.model._id){
+                    		e.values._id = e.model._id;
+                    		$.post(DataHost + "/manger/rank/update", {models:JSON.stringify([e.values])}, function(d){
+						    	if(d.error) return alert(d.error);
+						    	alert('ok')
+					   		},'json')
+                    	}
+					},				
+                });
+									
+});
+
+</script>
+<% include inc/foot %>

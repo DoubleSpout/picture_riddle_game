@@ -1,0 +1,190 @@
+<% include inc/head2 %>
+<% include inc/top %>
+<% include inc/left %>
+
+<script id="popup-editor" type="text/x-kendo-template">
+  <h3>Edit Person</h3>
+  <p>
+    <label>TypeId: <select name="TypeId">
+    	<% if(RiddleTypeArray.length>0) { %>
+    		<% RiddleTypeArray.forEach(function(v){ %>
+   				 <option value="<%= v._id %>" ><%= v.Name %></option>
+		  <% }) %>
+	   	<% }else{ %>
+    		<option>请先录入题库类型</option>	
+    	<% }%>
+    </select></label>
+  </p>
+<form id="PicUploadForm" action="/manger/riddle/upload" method="post" enctype="multipart/form-data" target="uploadfile">
+  <p>
+    <label>上传图片: <input id="file" type="file" name="file" value="" /></label>
+  </p>
+  </form>
+  <p>
+    <label>QType: <select name="QType">
+    	<option value="1" selected="selected">填空题</option>
+    	<option value="2">选择题</option>
+    </select></label>
+  </p>
+  <p>
+    <label>Title: <input type="text" name="Title" value="" /></label>
+  </p>
+  <p>
+    <label>Content: <input type="text" name="Content" value="" /></label>
+    <label>选择题才填入，格式参考:["答案1","答案2","答案3","答案4"]</label>
+  </p>
+  <p>
+    <label>Answer: <input type="text" name="Answer" value="" /></label>
+  </p>
+   <p>
+    <label>PicUrl: <input type="text" name="PicUrl" value="" /></label>
+  </p>
+</script>
+<iframe src="" id="uploadfile" name="uploadfile" style="display:none"></iframe>
+
+
+ <div id="grid"></div>
+
+<script>
+ $(function () {
+	 
+                var DataHost = window.DataHost,
+                    dataSource = new kendo.data.DataSource({
+                        transport: {
+                            read:  {
+                                url: DataHost + "/manger/riddle/read",
+                                type: "post"
+                            },
+                            edit: {
+                                url: DataHost + "/manger/riddle/update",
+                                type: "post"
+                            },
+                             create: {
+                                url: DataHost + "/manger/riddle/create",
+                                type: "post"
+                            },
+                            parameterMap: function(options, operation) {
+
+								if(operation === 'read' && options.filter){
+                                	return {models:kendo.stringify(options.filter.filters)};
+                                }
+                                if (operation !== "read" && options.models) {
+                                    return {models: kendo.stringify(options.models)};
+                                }
+
+
+                            }
+                        },
+                        batch: true,
+                        pageSize: 20,
+                        serverFiltering:true,
+                        filter: { logic: "and", filters: [ 
+		                        { field: "_id", operator: "filter", value: "" },
+		                        { field: "TypeId", operator: "filter", value: "" },
+		                        { field: "QType", operator: "filter", value: "" },
+		                        { field: "Title", operator: "filter", value: "" },
+		                        { field: "Content", operator: "filter", value: "" },
+		                        { field: "Answer", operator: "filter", value: "" },
+		                        { field: "InputTime", operator: "filter", value: "" },
+                         ] },
+                        schema: {
+                            model: {
+                                fields: {
+                                    "_id": { editable: false },
+                                    "TypeId": { editable: true,validation: { required: true} },
+                                    "PicUrl":{ editable: true,validation: { required: true} },
+                                    "QType": { editable: true,validation: { required: true}},
+									"Title":{editable: true,validation: { required: true} },
+                                    "Content": {editable: true },
+                                    "Answer": {editable: true,validation: { required: true} },
+									"InputTime":{ editable: false },
+                                }
+                            }
+                        }
+                    });
+
+                $("#grid").kendoGrid({
+                    dataSource: dataSource,
+                    navigatable: true,
+                    pageable: true,
+                    height: 500,
+                    toolbar: [    
+					    { name: "create" }
+					],
+                    columns: [
+                        { 
+							field: "_id",
+							title: "题目id", 
+						},
+						{ 
+							field: "TypeId",
+							title: "类型id", 
+						},
+						{ 
+							field: "PicUrl",
+							title: "图片路径", 
+						},
+						{ 
+							field: "QType",
+							title: "题型" 
+						},
+						{ 
+							field: "Title",
+							title: "题目标题"
+						},
+						{ 
+							field: "Content",
+							title: "题目选项"
+						},
+						{ 
+							field: "Answer",
+							title: "正确答案",
+						},
+						{ 
+							field: "InputTime",
+							title: "更新时间",
+						},
+						
+                        { 
+							command: ["destroy"]
+						}],
+                    editable: {
+                    	confirmation:'确定删除吗',
+                    	mode:"popup",
+                    	template: kendo.template($("#popup-editor").html())
+                    },	
+                    filterable:true,
+                    remove: function(e) {
+
+						    $.post(DataHost + "/manger/riddle/destory", {_id:e.model._id},function(d){
+						    	if(d.error) return alert(d.error);
+						    	alert('ok')
+						    },'json')
+
+					},
+					edit: function(e){
+
+						var that = $(e.container[0]).parent();
+							var style = that.attr('style').replace('scale(0.01)','scale(1.00)')
+							that.attr('style',style)
+							that.find('select').each(function(){
+								$(this).find('option').eq(0).attr('selected','selected').trigger('change')
+							})
+							$('#file').change(function(){
+								$('#PicUploadForm').trigger('submit')
+							})
+					},   		
+     });
+
+
+
+									
+});
+	window.upload_func = function(err,picurl){
+		if(err) return alert(err);
+		console.log(picurl)
+		$('input[name="PicUrl"]').val(picurl).trigger('change')
+	}
+
+</script>
+<% include inc/foot %>

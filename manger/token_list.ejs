@@ -1,0 +1,83 @@
+<% include inc/head2 %>
+<% include inc/top %>
+<% include inc/left %>
+
+
+ <div id="grid"></div>
+
+<script>
+ $(function () {
+	 
+                var DataHost = window.DataHost,
+                    dataSource = new kendo.data.DataSource({
+                        transport: {
+                            read:  {
+                                url: DataHost + "/manger/token/read",
+                                type: "post"
+                            },
+                            parameterMap: function(options, operation) {
+
+								if(operation === 'read' && options.filter){
+                                	return {models:kendo.stringify(options.filter.filters)};
+                                }
+                                if (operation !== "read" && options.models) {
+                                    return {models: kendo.stringify(options.models)};
+                                }
+                            }
+                        },
+                        batch: true,
+                        pageSize: 20,
+                        serverFiltering:true,
+                        filter: { logic: "and", filters: [ 
+		                        { field: "_id", operator: "filter", value: "" },
+		                        { field: "UserId", operator: "filter", value: "" },
+		                        { field: "InputTime", operator: "filter", value: "" },
+                         ] },
+                        schema: {
+                            model: {
+                                fields: {
+                                    "_id": { editable: false },
+                                    "UserId": { type: "number", validation: { required: true}  },
+                                    "InputTime": { validation: { required: true} },
+                                }
+                            }
+                        }
+                    });
+
+                $("#grid").kendoGrid({
+                    dataSource: dataSource,
+                    navigatable: true,
+                    pageable: true,
+                    height: 500,
+                    toolbar: [],
+                    columns: [
+                        { 
+							field: "_id",
+							title: "token id", 
+						},
+						{ 
+							field: "UserId",
+							title: "用户id", 
+						},
+						{ 
+							field: "InputTime",
+							title: "登录时间", 
+						},
+                        { 
+							command: "destroy", 
+							title: "删除" 
+						}],
+                    filterable:true,
+                    remove: function(e) {
+                    		console.log(e.model)
+					    $.post(DataHost + "/manger/token/destory", {_id:e.model._id},function(d){
+					    	if(d.error) return alert(d.error);
+					    	alert('ok')
+					    },'json')
+					},			
+                });
+									
+});
+
+</script>
+<% include inc/foot %>

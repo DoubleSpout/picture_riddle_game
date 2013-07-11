@@ -1,0 +1,58 @@
+﻿body {
+    margin: 0px;
+}
+
+div {
+    background-repeat: no-repeat;
+}
+
+.raw_image {
+    width: 100%;
+    height: 100%;
+}
+
+.preload {
+    display: none;
+}
+#main_container {
+}
+
+.form_sketch {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.u0_normal {
+    background-image: url('../官网_files/u0_normal.png');
+}
+
+.u0_container {
+    position:absolute;
+    left:11px;
+    top:9px;
+    width:740px;
+    height:439px;
+}
+
+#u0_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:746px;
+    height:445px;
+}
+
+.u1 {
+    position:absolute;
+    left:2px;
+    top:188px;
+    width:736px;
+    height:62px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
