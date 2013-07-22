@@ -34,7 +34,7 @@ ResultBL.GetRecordByTokenId = function(tokenid, cb){
 			})
 		},
 		function(callback){
-			ResultDl.FindByUserId({UserId:token.UserId}, function(err,doc){
+			ResultDl.FindByUserId(token.UserId, function(err,doc){
 				if(err){
 					logger.error(err);
 					return callback(ERR_DB);
@@ -47,7 +47,18 @@ ResultBL.GetRecordByTokenId = function(tokenid, cb){
 		if(err){
 			return cb(err);
 		}
-		cb(null, result);
+		var resultArray = []
+		result.forEach(function(v){
+			resultArray.push(
+				{
+					Score:v.Score,
+					EndTime:v.EndTime,
+					Mobile:utils.format_mobile(v.Mobile),
+					Name:utils.format_name(v.Name)				
+				}
+			)
+		})
+		cb(null, resultArray);
 	})
 }
 

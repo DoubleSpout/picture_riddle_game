@@ -307,3 +307,478 @@ CastError: Cast to ObjectId failed for value "[object Object]" at path "_id"
 [2013-07-11 20:24:35.022] [INFO] cheese - server start on 8000
 [2013-07-11 20:25:09.278] [INFO] cheese - server start on 8000
 [2013-07-11 20:25:59.889] [INFO] cheese - server start on 8000
+[2013-07-22 20:49:27.895] [INFO] cheese - server start on 8000
+[2013-07-22 20:51:29.380] [INFO] cheese - server start on 8000
+[2013-07-22 20:53:38.793] [INFO] cheese - server start on 8000
+[2013-07-22 20:53:57.683] [INFO] cheese - server start on 8000
+[2013-07-22 20:54:18.758] [INFO] cheese - server start on 8000
+[2013-07-22 20:58:42.340] [INFO] cheese - server start on 8000
+[2013-07-22 20:59:03.189] [INFO] cheese - server start on 8000
+[2013-07-22 21:00:32.201] [INFO] cheese - server start on 8000
+[2013-07-22 21:00:33.649] [ERROR] cheese - { message: 'Cast to ObjectId failed for value "[object Object]" at path "_id"',
+  name: 'CastError',
+  type: 'ObjectId',
+  value: { UserId: '51dd5984752c8bb423000003' },
+  path: '_id' }
+CastError: Cast to ObjectId failed for value "[object Object]" at path "_id"
+    at ObjectId.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:100:13)
+    at ObjectId.castForQuery (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:149:17)
+    at Query.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:378:34)
+    at Query.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:1761:10)
+    at Function.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\model.js:944:16)
+    at Function.UserSchema.statics.FindById (F:\github\picture_riddle_game\dl\user.dl.js:27:15)
+    at async.series.RiddleDl.FindAllIdByTypeId.RidArray (F:\github\picture_riddle_game\bl\riddle.bl.js:59:11)
+    at F:\github\picture_riddle_game\node_modules\async\lib\async.js:548:21
+    at F:\github\picture_riddle_game\node_modules\async\lib\async.js:224:13
+    at iterate (F:\github\picture_riddle_game\node_modules\async\lib\async.js:131:13)
+[2013-07-22 21:01:33.529] [INFO] cheese - server start on 8000
+[2013-07-22 21:01:35.241] [ERROR] cheese - { message: 'Cast to ObjectId failed for value "[object Object]" at path "_id"',
+  name: 'CastError',
+  type: 'ObjectId',
+  value: { _id: '51dd5984752c8bb423000003' },
+  path: '_id' }
+CastError: Cast to ObjectId failed for value "[object Object]" at path "_id"
+    at ObjectId.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:100:13)
+    at ObjectId.castForQuery (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:149:17)
+    at Query.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:378:34)
+    at Query.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:1761:10)
+    at Function.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\model.js:944:16)
+    at Function.UserSchema.statics.FindById (F:\github\picture_riddle_game\dl\user.dl.js:27:15)
+    at async.series.RiddleDl.FindAllIdByTypeId.RidArray (F:\github\picture_riddle_game\bl\riddle.bl.js:59:11)
+    at F:\github\picture_riddle_game\node_modules\async\lib\async.js:548:21
+    at F:\github\picture_riddle_game\node_modules\async\lib\async.js:224:13
+    at iterate (F:\github\picture_riddle_game\node_modules\async\lib\async.js:131:13)
+[2013-07-22 21:02:56.540] [INFO] cheese - server start on 8000
+[2013-07-22 21:04:02.760] [INFO] cheese - server start on 8000
+[2013-07-22 21:04:04.151] [ERROR] cheese - { message: 'Validation failed',
+  name: 'ValidationError',
+  errors: 
+   { RTypeId: 
+      { message: 'Validator "required" failed for path RTypeId with value ``',
+        name: 'ValidatorError',
+        path: 'RTypeId',
+        type: 'required',
+        value: '' } } }
+ValidationError: Validator "required" failed for path RTypeId with value ``
+    at model.Document.invalidate (F:\github\picture_riddle_game\node_modules\mongoose\lib\document.js:979:32)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\document.js:948:16
+    at validate (F:\github\picture_riddle_game\node_modules\mongoose\lib\schematype.js:558:7)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\schematype.js:574:9
+    at Array.forEach (native)
+    at SchemaString.SchemaType.doValidate (F:\github\picture_riddle_game\node_modules\mongoose\lib\schematype.js:562:19)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\document.js:946:9
+    at process._tickCallback (node.js:415:13)
+[2013-07-22 21:05:27.791] [INFO] cheese - server start on 8000
+[2013-07-22 21:06:05.669] [INFO] cheese - server start on 8000
+[2013-07-22 21:07:00.806] [INFO] cheese - server start on 8000
+[2013-07-22 21:07:14.068] [INFO] cheese - server start on 8000
+[2013-07-22 21:08:24.350] [INFO] cheese - server start on 8000
+[2013-07-22 21:09:52.159] [INFO] cheese - server start on 8000
+[2013-07-22 21:11:38.196] [INFO] cheese - server start on 8000
+[2013-07-22 21:12:26.992] [INFO] cheese - server start on 8000
+[2013-07-22 21:13:00.491] [INFO] cheese - server start on 8000
+[2013-07-22 21:13:46.884] [INFO] cheese - server start on 8000
+[2013-07-22 21:14:27.955] [INFO] cheese - server start on 8000
+[2013-07-22 21:14:30.492] [ERROR] cheese - [TypeError: Cannot read property '_id' of undefined]
+TypeError: Cannot read property '_id' of undefined
+    at ObjectId.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:93:12)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:118:17
+    at Array.map (native)
+    at ObjectId.handleArray (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:117:14)
+    at ObjectId.castForQuery (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:147:20)
+    at Query.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:406:39)
+    at Query.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:1761:10)
+    at Function.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\model.js:944:16)
+    at Function.Riddle.statics.FindByIdArray (F:\github\picture_riddle_game\dl\riddle.dl.js:33:15)
+    at async.series.ResultObj.Mobile (F:\github\picture_riddle_game\bl\riddle.bl.js:95:13)
+[2013-07-22 21:15:44.291] [INFO] cheese - server start on 8000
+[2013-07-22 21:15:45.772] [ERROR] cheese - { message: 'Cast to ObjectId failed for value "" at path "_id"',
+  name: 'CastError',
+  type: 'ObjectId',
+  value: [],
+  path: '_id' }
+CastError: Cast to ObjectId failed for value "" at path "_id"
+    at ObjectId.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:100:13)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:118:17
+    at Array.map (native)
+    at ObjectId.handleArray (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:117:14)
+    at ObjectId.castForQuery (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:147:20)
+    at Query.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:406:39)
+    at Query.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:1761:10)
+    at Function.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\model.js:944:16)
+    at Function.Riddle.statics.FindByIdArray (F:\github\picture_riddle_game\dl\riddle.dl.js:33:15)
+    at async.series.ResultObj.Mobile (F:\github\picture_riddle_game\bl\riddle.bl.js:95:13)
+[2013-07-22 21:16:24.948] [INFO] cheese - server start on 8000
+[2013-07-22 21:16:27.139] [ERROR] cheese - [TypeError: Cannot read property '_id' of undefined]
+TypeError: Cannot read property '_id' of undefined
+    at ObjectId.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:93:12)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:118:17
+    at Array.map (native)
+    at ObjectId.handleArray (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:117:14)
+    at ObjectId.castForQuery (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:147:20)
+    at Query.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:406:39)
+    at Query.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:1761:10)
+    at Function.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\model.js:944:16)
+    at Function.Riddle.statics.FindByIdArray (F:\github\picture_riddle_game\dl\riddle.dl.js:33:15)
+    at async.series.ResultObj.Mobile (F:\github\picture_riddle_game\bl\riddle.bl.js:95:13)
+[2013-07-22 21:16:48.416] [INFO] cheese - server start on 8000
+[2013-07-22 21:16:50.125] [ERROR] cheese - [TypeError: Cannot read property '_id' of undefined]
+TypeError: Cannot read property '_id' of undefined
+    at ObjectId.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:93:12)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:118:17
+    at Array.map (native)
+    at ObjectId.handleArray (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:117:14)
+    at ObjectId.castForQuery (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:147:20)
+    at Query.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:406:39)
+    at Query.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:1761:10)
+    at Function.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\model.js:944:16)
+    at Function.Riddle.statics.FindByIdArray (F:\github\picture_riddle_game\dl\riddle.dl.js:33:15)
+    at async.series.ResultObj.Mobile (F:\github\picture_riddle_game\bl\riddle.bl.js:97:13)
+[2013-07-22 21:17:41.284] [INFO] cheese - server start on 8000
+[2013-07-22 21:17:52.269] [ERROR] cheese - [TypeError: Cannot read property '_id' of undefined]
+TypeError: Cannot read property '_id' of undefined
+    at ObjectId.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:93:12)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:118:17
+    at Array.map (native)
+    at ObjectId.handleArray (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:117:14)
+    at ObjectId.castForQuery (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:147:20)
+    at Query.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:406:39)
+    at Query.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:1761:10)
+    at Function.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\model.js:944:16)
+    at Function.Riddle.statics.FindByIdArray (F:\github\picture_riddle_game\dl\riddle.dl.js:33:15)
+    at async.series.ResultObj.Mobile (F:\github\picture_riddle_game\bl\riddle.bl.js:97:13)
+[2013-07-22 21:18:25.898] [INFO] cheese - server start on 8000
+[2013-07-22 21:18:28.500] [ERROR] cheese - [TypeError: Cannot read property '_id' of undefined]
+TypeError: Cannot read property '_id' of undefined
+    at ObjectId.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:93:12)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:118:17
+    at Array.map (native)
+    at ObjectId.handleArray (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:117:14)
+    at ObjectId.castForQuery (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:147:20)
+    at Query.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:406:39)
+    at Query.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:1761:10)
+    at Function.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\model.js:944:16)
+    at Function.Riddle.statics.FindByIdArray (F:\github\picture_riddle_game\dl\riddle.dl.js:33:15)
+    at async.series.ResultObj.Mobile (F:\github\picture_riddle_game\bl\riddle.bl.js:98:13)
+[2013-07-22 21:19:56.844] [INFO] cheese - server start on 8000
+[2013-07-22 21:20:01.037] [ERROR] cheese - { message: 'Cast to ObjectId failed for value "{ _id: 51ed2f338510cec81f000002 }" at path "_id"',
+  name: 'CastError',
+  type: 'ObjectId',
+  value: [ { _id: 51ed2f338510cec81f000002 } ],
+  path: '_id' }
+CastError: Cast to ObjectId failed for value "{ _id: 51ed2f338510cec81f000002 }" at path "_id"
+    at ObjectId.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:100:13)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:118:17
+    at Array.map (native)
+    at ObjectId.handleArray (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:117:14)
+    at ObjectId.castForQuery (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:147:20)
+    at Query.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:406:39)
+    at Query.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:1761:10)
+    at Function.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\model.js:944:16)
+    at Function.Riddle.statics.FindByIdArray (F:\github\picture_riddle_game\dl\riddle.dl.js:33:15)
+    at async.series.ResultObj.Mobile (F:\github\picture_riddle_game\bl\riddle.bl.js:98:13)
+[2013-07-22 21:20:18.721] [INFO] cheese - server start on 8000
+[2013-07-22 21:20:54.080] [INFO] cheese - server start on 8000
+[2013-07-22 21:21:41.076] [INFO] cheese - server start on 8000
+[2013-07-22 21:22:46.193] [INFO] cheese - server start on 8000
+[2013-07-22 21:26:24.847] [INFO] cheese - server start on 8000
+[2013-07-22 21:28:35.281] [INFO] cheese - server start on 8000
+[2013-07-22 21:29:41.928] [INFO] cheese - server start on 8000
+[2013-07-22 21:31:27.848] [INFO] cheese - server start on 8000
+[2013-07-22 21:31:56.075] [ERROR] cheese - 无效的答题,重复答题
+[2013-07-22 21:31:58.919] [ERROR] cheese - 无效的答题,重复答题
+[2013-07-22 21:31:59.525] [ERROR] cheese - 无效的答题,重复答题
+[2013-07-22 21:32:49.033] [INFO] cheese - server start on 8000
+[2013-07-22 21:35:07.269] [INFO] cheese - server start on 8000
+[2013-07-22 21:35:51.660] [INFO] cheese - server start on 8000
+[2013-07-22 21:36:36.995] [INFO] cheese - server start on 8000
+[2013-07-22 21:39:01.510] [INFO] cheese - server start on 8000
+[2013-07-22 21:39:30.488] [INFO] cheese - server start on 8000
+[2013-07-22 21:39:54.341] [ERROR] cheese - 无效的答题,重复答题
+[2013-07-22 21:41:04.493] [INFO] cheese - server start on 8000
+[2013-07-22 21:45:12.156] [INFO] cheese - server start on 8000
+[2013-07-22 21:45:20.231] [ERROR] cheese - { message: 'Cast to ObjectId failed for value "123" at path "_id"',
+  name: 'CastError',
+  type: 'ObjectId',
+  value: '123',
+  path: '_id' }
+CastError: Cast to ObjectId failed for value "123" at path "_id"
+    at ObjectId.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:100:13)
+    at ObjectId.castForQuery (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:149:17)
+    at Query.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:411:32)
+    at Query.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:1761:10)
+    at Function.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\model.js:944:16)
+    at Function.UserToken.statics.FindById (F:\github\picture_riddle_game\dl\token.dl.js:17:15)
+    at async.series.UserDl.FindById.user (F:\github\picture_riddle_game\bl\user.bl.js:241:12)
+    at F:\github\picture_riddle_game\node_modules\async\lib\async.js:548:21
+    at F:\github\picture_riddle_game\node_modules\async\lib\async.js:224:13
+    at iterate (F:\github\picture_riddle_game\node_modules\async\lib\async.js:131:13)
+[2013-07-22 21:48:35.542] [INFO] cheese - server start on 8000
+[2013-07-22 21:48:39.149] [ERROR] cheese - { message: 'Cast to ObjectId failed for value "123" at path "_id"',
+  name: 'CastError',
+  type: 'ObjectId',
+  value: '123',
+  path: '_id' }
+CastError: Cast to ObjectId failed for value "123" at path "_id"
+    at ObjectId.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:100:13)
+    at ObjectId.castForQuery (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:149:17)
+    at Query.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:411:32)
+    at Query.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:1761:10)
+    at Function.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\model.js:944:16)
+    at Function.UserToken.statics.FindById (F:\github\picture_riddle_game\dl\token.dl.js:17:15)
+    at async.series.UserDl.FindById.user (F:\github\picture_riddle_game\bl\user.bl.js:241:12)
+    at F:\github\picture_riddle_game\node_modules\async\lib\async.js:548:21
+    at F:\github\picture_riddle_game\node_modules\async\lib\async.js:224:13
+    at iterate (F:\github\picture_riddle_game\node_modules\async\lib\async.js:131:13)
+[2013-07-22 21:49:42.791] [INFO] cheese - server start on 8000
+[2013-07-22 21:49:44.282] [ERROR] cheese - { message: 'Cast to ObjectId failed for value "123" at path "_id"',
+  name: 'CastError',
+  type: 'ObjectId',
+  value: '123',
+  path: '_id' }
+CastError: Cast to ObjectId failed for value "123" at path "_id"
+    at ObjectId.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:100:13)
+    at ObjectId.castForQuery (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:149:17)
+    at Query.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:411:32)
+    at Query.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:1761:10)
+    at Function.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\model.js:944:16)
+    at Function.UserToken.statics.FindById (F:\github\picture_riddle_game\dl\token.dl.js:17:15)
+    at async.series.UserDl.FindById.user (F:\github\picture_riddle_game\bl\user.bl.js:241:12)
+    at F:\github\picture_riddle_game\node_modules\async\lib\async.js:548:21
+    at F:\github\picture_riddle_game\node_modules\async\lib\async.js:224:13
+    at iterate (F:\github\picture_riddle_game\node_modules\async\lib\async.js:131:13)
+[2013-07-22 21:50:01.801] [INFO] cheese - server start on 8000
+[2013-07-22 21:50:03.124] [ERROR] cheese - { message: 'Cast to ObjectId failed for value "123" at path "_id"',
+  name: 'CastError',
+  type: 'ObjectId',
+  value: '123',
+  path: '_id' }
+CastError: Cast to ObjectId failed for value "123" at path "_id"
+    at ObjectId.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:100:13)
+    at ObjectId.castForQuery (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:149:17)
+    at Query.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:411:32)
+    at Query.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:1761:10)
+    at Function.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\model.js:944:16)
+    at Function.UserToken.statics.FindById (F:\github\picture_riddle_game\dl\token.dl.js:17:15)
+    at async.series.UserDl.FindById.user (F:\github\picture_riddle_game\bl\user.bl.js:241:12)
+    at F:\github\picture_riddle_game\node_modules\async\lib\async.js:548:21
+    at F:\github\picture_riddle_game\node_modules\async\lib\async.js:224:13
+    at iterate (F:\github\picture_riddle_game\node_modules\async\lib\async.js:131:13)
+[2013-07-22 21:50:46.687] [ERROR] cheese - { message: 'Cast to ObjectId failed for value "123" at path "_id"',
+  name: 'CastError',
+  type: 'ObjectId',
+  value: '123',
+  path: '_id' }
+CastError: Cast to ObjectId failed for value "123" at path "_id"
+    at ObjectId.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:100:13)
+    at ObjectId.castForQuery (F:\github\picture_riddle_game\node_modules\mongoose\lib\schema\objectid.js:149:17)
+    at Query.cast (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:411:32)
+    at Query.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\query.js:1761:10)
+    at Function.findOne (F:\github\picture_riddle_game\node_modules\mongoose\lib\model.js:944:16)
+    at Function.UserToken.statics.FindById (F:\github\picture_riddle_game\dl\token.dl.js:17:15)
+    at async.series.UserDl.FindById.user (F:\github\picture_riddle_game\bl\user.bl.js:241:12)
+    at F:\github\picture_riddle_game\node_modules\async\lib\async.js:548:21
+    at F:\github\picture_riddle_game\node_modules\async\lib\async.js:224:13
+    at iterate (F:\github\picture_riddle_game\node_modules\async\lib\async.js:131:13)
+[2013-07-22 21:50:58.156] [INFO] cheese - server start on 8000
+[2013-07-22 21:53:01.350] [INFO] cheese - server start on 8000
+[2013-07-22 21:53:49.667] [INFO] cheese - server start on 8000
+[2013-07-22 21:54:18.108] [INFO] cheese - server start on 8000
+[2013-07-22 21:56:01.568] [INFO] cheese - server start on 8000
+[2013-07-22 21:56:28.756] [INFO] cheese - server start on 8000
+[2013-07-22 21:58:28.482] [INFO] cheese - server start on 8000
+[2013-07-22 22:04:57.178] [INFO] cheese - server start on 8000
+[2013-07-22 22:05:08.556] [INFO] cheese - server start on 8000
+[2013-07-22 22:06:15.472] [INFO] cheese - server start on 8000
+[2013-07-22 22:10:10.648] [INFO] cheese - server start on 8000
+[2013-07-22 22:10:27.481] [INFO] cheese - server start on 8000
+[2013-07-22 22:10:42.380] [INFO] cheese - server start on 8000
+[2013-07-22 22:18:06.665] [INFO] cheese - server start on 8000
+[2013-07-22 22:23:20.620] [INFO] cheese - server start on 8000
+[2013-07-22 22:32:07.864] [INFO] cheese - server start on 8000
+[2013-07-22 22:33:11.601] [INFO] cheese - server start on 8000
+[2013-07-22 22:33:40.465] [INFO] cheese - server start on 8000
+[2013-07-22 22:37:48.077] [INFO] cheese - server start on 8000
+[2013-07-22 22:38:21.036] [INFO] cheese - server start on 8000
+[2013-07-22 22:38:45.080] [INFO] cheese - server start on 8000
+[2013-07-22 22:38:45.124] [ERROR] cheese - { message: 'Validation failed',
+  name: 'ValidationError',
+  errors: 
+   { Time: 
+      { message: 'Validator "required" failed for path Time with value `undefined`',
+        name: 'ValidatorError',
+        path: 'Time',
+        type: 'required',
+        value: undefined },
+     ResultId: 
+      { message: 'Validator "required" failed for path ResultId with value `undefined`',
+        name: 'ValidatorError',
+        path: 'ResultId',
+        type: 'required',
+        value: undefined } } }
+ValidationError: Validator "required" failed for path Time with value `undefined`, Validator "required" failed for path ResultId with value `undefined`
+    at model.Document.invalidate (F:\github\picture_riddle_game\node_modules\mongoose\lib\document.js:979:32)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\document.js:948:16
+    at validate (F:\github\picture_riddle_game\node_modules\mongoose\lib\schematype.js:558:7)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\schematype.js:574:9
+    at Array.forEach (native)
+    at SchemaDate.SchemaType.doValidate (F:\github\picture_riddle_game\node_modules\mongoose\lib\schematype.js:562:19)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\document.js:946:9
+    at process._tickCallback (node.js:415:13)
+[2013-07-22 22:38:45.129] [ERROR] cheese - 数据库异常
+[2013-07-22 22:50:52.581] [INFO] cheese - server start on 8000
+[2013-07-22 22:50:52.617] [ERROR] cheese - [Function]
+[2013-07-22 22:51:48.584] [INFO] cheese - server start on 8000
+[2013-07-22 22:51:48.650] [ERROR] cheese - [Function]
+[2013-07-22 22:52:14.944] [INFO] cheese - server start on 8000
+[2013-07-22 22:52:14.983] [ERROR] cheese - [Function]
+[2013-07-22 22:52:32.363] [INFO] cheese - server start on 8000
+[2013-07-22 22:52:32.403] [ERROR] cheese - [Function]
+[2013-07-22 22:52:53.802] [INFO] cheese - server start on 8000
+[2013-07-22 22:52:53.838] [ERROR] cheese - [Function]
+[2013-07-22 22:53:09.918] [INFO] cheese - server start on 8000
+[2013-07-22 22:53:09.952] [ERROR] cheese - [Function]
+[2013-07-22 22:53:58.190] [INFO] cheese - server start on 8000
+[2013-07-22 22:53:58.235] [ERROR] cheese - { message: 'Validation failed',
+  name: 'ValidationError',
+  errors: 
+   { Time: 
+      { message: 'Validator "required" failed for path Time with value `undefined`',
+        name: 'ValidatorError',
+        path: 'Time',
+        type: 'required',
+        value: undefined },
+     ResultId: 
+      { message: 'Validator "required" failed for path ResultId with value `undefined`',
+        name: 'ValidatorError',
+        path: 'ResultId',
+        type: 'required',
+        value: undefined } } }
+ValidationError: Validator "required" failed for path Time with value `undefined`, Validator "required" failed for path ResultId with value `undefined`
+    at model.Document.invalidate (F:\github\picture_riddle_game\node_modules\mongoose\lib\document.js:979:32)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\document.js:948:16
+    at validate (F:\github\picture_riddle_game\node_modules\mongoose\lib\schematype.js:558:7)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\schematype.js:574:9
+    at Array.forEach (native)
+    at SchemaDate.SchemaType.doValidate (F:\github\picture_riddle_game\node_modules\mongoose\lib\schematype.js:562:19)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\document.js:946:9
+    at process._tickCallback (node.js:415:13)
+[2013-07-22 22:53:58.240] [ERROR] cheese - 数据库异常
+[2013-07-22 22:54:15.355] [INFO] cheese - server start on 8000
+[2013-07-22 22:54:15.397] [ERROR] cheese - { message: 'Validation failed',
+  name: 'ValidationError',
+  errors: 
+   { Time: 
+      { message: 'Validator "required" failed for path Time with value `undefined`',
+        name: 'ValidatorError',
+        path: 'Time',
+        type: 'required',
+        value: undefined },
+     ResultId: 
+      { message: 'Validator "required" failed for path ResultId with value `undefined`',
+        name: 'ValidatorError',
+        path: 'ResultId',
+        type: 'required',
+        value: undefined } } }
+ValidationError: Validator "required" failed for path Time with value `undefined`, Validator "required" failed for path ResultId with value `undefined`
+    at model.Document.invalidate (F:\github\picture_riddle_game\node_modules\mongoose\lib\document.js:979:32)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\document.js:948:16
+    at validate (F:\github\picture_riddle_game\node_modules\mongoose\lib\schematype.js:558:7)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\schematype.js:574:9
+    at Array.forEach (native)
+    at SchemaDate.SchemaType.doValidate (F:\github\picture_riddle_game\node_modules\mongoose\lib\schematype.js:562:19)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\document.js:946:9
+    at process._tickCallback (node.js:415:13)
+[2013-07-22 22:54:15.401] [ERROR] cheese - 数据库异常
+[2013-07-22 22:54:53.845] [INFO] cheese - server start on 8000
+[2013-07-22 22:54:53.889] [ERROR] cheese - { message: 'Validation failed',
+  name: 'ValidationError',
+  errors: 
+   { Time: 
+      { message: 'Validator "required" failed for path Time with value `undefined`',
+        name: 'ValidatorError',
+        path: 'Time',
+        type: 'required',
+        value: undefined },
+     ResultId: 
+      { message: 'Validator "required" failed for path ResultId with value `undefined`',
+        name: 'ValidatorError',
+        path: 'ResultId',
+        type: 'required',
+        value: undefined } } }
+ValidationError: Validator "required" failed for path Time with value `undefined`, Validator "required" failed for path ResultId with value `undefined`
+    at model.Document.invalidate (F:\github\picture_riddle_game\node_modules\mongoose\lib\document.js:979:32)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\document.js:948:16
+    at validate (F:\github\picture_riddle_game\node_modules\mongoose\lib\schematype.js:558:7)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\schematype.js:574:9
+    at Array.forEach (native)
+    at SchemaDate.SchemaType.doValidate (F:\github\picture_riddle_game\node_modules\mongoose\lib\schematype.js:562:19)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\document.js:946:9
+    at process._tickCallback (node.js:415:13)
+[2013-07-22 22:54:53.894] [ERROR] cheese - 数据库异常
+[2013-07-22 22:55:43.896] [INFO] cheese - server start on 8000
+[2013-07-22 22:55:43.940] [ERROR] cheese - { message: 'Validation failed',
+  name: 'ValidationError',
+  errors: 
+   { Time: 
+      { message: 'Validator "required" failed for path Time with value `undefined`',
+        name: 'ValidatorError',
+        path: 'Time',
+        type: 'required',
+        value: undefined },
+     ResultId: 
+      { message: 'Validator "required" failed for path ResultId with value `undefined`',
+        name: 'ValidatorError',
+        path: 'ResultId',
+        type: 'required',
+        value: undefined } } }
+ValidationError: Validator "required" failed for path Time with value `undefined`, Validator "required" failed for path ResultId with value `undefined`
+    at model.Document.invalidate (F:\github\picture_riddle_game\node_modules\mongoose\lib\document.js:979:32)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\document.js:948:16
+    at validate (F:\github\picture_riddle_game\node_modules\mongoose\lib\schematype.js:558:7)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\schematype.js:574:9
+    at Array.forEach (native)
+    at SchemaDate.SchemaType.doValidate (F:\github\picture_riddle_game\node_modules\mongoose\lib\schematype.js:562:19)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\document.js:946:9
+    at process._tickCallback (node.js:415:13)
+[2013-07-22 22:55:43.945] [ERROR] cheese - 数据库异常
+[2013-07-22 22:56:21.769] [INFO] cheese - server start on 8000
+[2013-07-22 22:56:21.813] [ERROR] cheese - { message: 'Validation failed',
+  name: 'ValidationError',
+  errors: 
+   { Time: 
+      { message: 'Validator "required" failed for path Time with value `undefined`',
+        name: 'ValidatorError',
+        path: 'Time',
+        type: 'required',
+        value: undefined },
+     ResultId: 
+      { message: 'Validator "required" failed for path ResultId with value `undefined`',
+        name: 'ValidatorError',
+        path: 'ResultId',
+        type: 'required',
+        value: undefined } } }
+ValidationError: Validator "required" failed for path Time with value `undefined`, Validator "required" failed for path ResultId with value `undefined`
+    at model.Document.invalidate (F:\github\picture_riddle_game\node_modules\mongoose\lib\document.js:979:32)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\document.js:948:16
+    at validate (F:\github\picture_riddle_game\node_modules\mongoose\lib\schematype.js:558:7)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\schematype.js:574:9
+    at Array.forEach (native)
+    at SchemaDate.SchemaType.doValidate (F:\github\picture_riddle_game\node_modules\mongoose\lib\schematype.js:562:19)
+    at F:\github\picture_riddle_game\node_modules\mongoose\lib\document.js:946:9
+    at process._tickCallback (node.js:415:13)
+[2013-07-22 22:56:21.818] [ERROR] cheese - 数据库异常
+[2013-07-22 22:57:18.412] [INFO] cheese - server start on 8000
+[2013-07-22 22:57:18.496] [INFO] cheese - update rank done
+[2013-07-22 22:57:41.831] [INFO] cheese - server start on 8000
+[2013-07-22 22:57:41.860] [INFO] cheese - clear rank done
+[2013-07-22 22:57:41.879] [INFO] cheese - update rank done
+[2013-07-22 22:59:39.582] [INFO] cheese - server start on 8000
+[2013-07-22 22:59:39.617] [INFO] cheese - clear rank done
+[2013-07-22 22:59:39.636] [INFO] cheese - update rank done
+[2013-07-22 23:02:39.757] [INFO] cheese - server start on 8000
+[2013-07-22 23:02:39.785] [INFO] cheese - clear rank done
+[2013-07-22 23:02:39.806] [INFO] cheese - update rank done
+[2013-07-22 23:08:59.465] [INFO] cheese - server start on 8000
+[2013-07-22 23:08:59.493] [INFO] cheese - clear rank done
+[2013-07-22 23:08:59.512] [INFO] cheese - update rank done

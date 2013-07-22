@@ -64,6 +64,15 @@ Result.statics.FindTop100 = function (typeid, cb) { //查询出排行榜最近10
   			 .exec(cb);	
 }
 
+Result.statics.FindTopResultByUid= function(uid,typeid,cb){
+  return this.findOne({"UserId":uid, "RTypeId": typeid})
+         .where("Status").equals(1)
+         .sort({Score:1})
+         .exec(cb);
+
+}
+
+
 Result.statics.CountIpOneDay = function (ip, cb) { //查询出排行榜最近100个不同用户的最快记录
   var ts = Date.now() - 1000*60*60*24;
   return this.count({Ip:ip, StartTime:{"$gt": ts}}, cb);

@@ -81,18 +81,29 @@ exports.check_name = function(name){
 };
 
 exports.format_mobile = function(mobile){
-  for(i=3;i<8;i++){
+  if(!mobile) return mobile
+
+  var n = mobile.length;
+  var str_array = []
+  for(i=0;i<n;i++){
+    if(i>=3 && i<8){
+      str_array[i] = '*';
+    }
+    else str_array[i] = mobile[i];
       mobile[i] = '*';
   }
-  return mobile
+  return str_array.join('')
 };
 
 exports.format_name = function(name){
+  if(!name) return name
+    
   var n = name.length;
-  for(i=1;i<n;i++){
-      name[i] = '*';
+  var str_array = []
+  for(i=0;i<n;i++){
+      i>0 ? str_array[i] = '*' : str_array[i] = name[i];
   }
-  return name
+  return str_array.join('')
 };
 
 

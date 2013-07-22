@@ -2,6 +2,7 @@
 var RankDl = require('../dl/rank.dl.js');
 var ResultDl = require('../dl/result.dl.js');
 var async = require('async');
+var utils = require('../utils/utils.js');
 
 var RankBL = {};
 
@@ -21,12 +22,17 @@ RankBL.GetRank = function(cb){
 					logger.error(err);
 					return callback(ERR_DB);
 				}
-				rank = doc
-				rank.forEach(function(v){
-					delete v.RTypeId
-					delete v.IsCheet
-					delete v.ResultId
+
+				doc.forEach(function(v){
+					rank.push({
+						Mobile:v.Mobile,
+						Name:v.Name,
+						Score:v.Score,
+						Time:v.Time,
+						InputTime:v.InputTime
+					})
 				})
+				
 				cb(null, rank);
 	})
 
@@ -39,7 +45,7 @@ cb(err,rank)
 */
 RankBL.DelRank = function(cb){
 
-	RankDl.FindAllByTypeId(global.TypeId, function(err,res){
+	RankDl.DeleteByTyepId(global.TypeId, function(err,res){
 				if(err){
 					logger.error(err);
 					return callback(ERR_DB);
@@ -55,6 +61,7 @@ cb(err)
 */
 RankBL.Update = function(cb){
 
+	var distinct_uid = []
 	var result = [];
 	async.series([function(callback){
 			ResultDl.FindTop100(global.TypeId, function(err,doc){
@@ -62,12 +69,51 @@ RankBL.Update = function(cb){
 					logger.error(err);
 					return callback(ERR_DB);
 				}			
-				result = doc
+				distinct_uid = doc
 				callback();
 			})
 		},
 		function(callback){
-			RankDl.AddAll(result, function(err,doc1,doc2){
+
+			var topResult = [];
+			distinct_uid.forEach(function(v){
+				topResult.push(function(res_v){
+
+					return function(cb2){
+						ResultDl.FindTopResultByUid(res_v, global.TypeId, function(err,doc){
+							if(err) return cb2(err);
+							result.push(doc);
+							cb2();
+						})
+					}
+
+				}(v))
+
+			})
+
+
+			async.series(topResult,function(err){
+
+				if(err) return callback(err);
+				callback();
+			});
+
+		},
+		function(callback){
+			var rankArray = []
+			result.forEach(function(v){
+				rankArray.push({
+					ResultId:v._id,
+					Mobile:utils.format_mobile(v.Mobile),
+					Name:utils.format_name(v.Name),
+					Score:v.Score,
+					Time:new Date(v.EndTime),
+					RTypeId:global.TypeId
+				})
+			})
+
+
+			RankDl.AddAll(rankArray, function(err,doc1,doc2){
 				if(err){
 					logger.error(err);
 					return callback(ERR_DB);

@@ -30,7 +30,7 @@ Riddle.statics.FindById = function (id, cb) {  //根据id查找某一道题目�
 }
 
 Riddle.statics.FindByIdArray = function (idArray, cb) {  //根据id查找某一道题目的信息
-  return this.findOne({"_id":{$in:idArray}}, cb);
+  return this.find({"_id":{$in:idArray}}, cb);
 }
 
 Riddle.statics.ModifyById = function (id,obj,cb) { //根据题目id，修改一条题目

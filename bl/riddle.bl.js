@@ -3,6 +3,7 @@ var RiddleDl = require('../dl/riddle.dl.js');
 var ResultDl = require('../dl/result.dl.js');
 var UserDl = require('../dl/user.dl.js');
 var TokenDl = require('../dl/token.dl.js');
+var utils = require('../utils/utils.js')
 
 var async = require('async');
 
@@ -12,6 +13,7 @@ ERR_DB = '数据库异常'
 ERR_TOKEN = '登录超时，请重新登录'
 ERR_USER_DATA = '获取用户数据失败，请重新登陆'
 ERR_RIDDLE_COUNT = '当天题目回答次数过多'
+ERR_GENERROR = '生成题库失败'
 
 
 /*
@@ -56,7 +58,7 @@ RiddleBL.GetRiddle = function(tokenid, ip, cb){ //根据tokenid获取一次答�
 			})
 		},
 		function(callback){
-			UserDl.FindById({UserId:token.UserId}, function(err,doc){ //根据用户id查找到用户信息
+			UserDl.FindById(token.UserId, function(err,doc){ //根据用户id查找到用户信息
 				if(err){
 					logger.error(err);
 					return callback(ERR_DB);
@@ -74,21 +76,23 @@ RiddleBL.GetRiddle = function(tokenid, ip, cb){ //根据tokenid获取一次答�
 				if(err){
 					logger.error(err);
 					return callback(ERR_DB);
-				}			
+				}		
 				RidArray = doc
 				callback();
 			})
 		},
 		function(callback){ //根据所有题目id,随机抽取出n道题目的id
 			var n = global.RiddleNumber;
-			while(--n){
+			while(n--){
 				var len = RidArray.length;
-				var r = Math.Floor(Math.random()*len);
-				ChoseRidArray.push(RidArray.splice(r,0)['_id']);
+				var r = Math.floor(Math.random()*len);
+				ChoseRidArray.push(RidArray.splice(r,1)[0]['_id']);
+
 			}
 			callback()
 		},
 		function(callback){ //根据将抽取出的n道题目的id，找到这些题目的信息
+
 			RiddleDl.FindByIdArray(ChoseRidArray, function(err, doc){
 				if(err){
 					logger.error(err);
@@ -100,8 +104,8 @@ RiddleBL.GetRiddle = function(tokenid, ip, cb){ //根据tokenid获取一次答�
 		},
 		function(callback){ //将信息插入到答题记录集合,表示此用户开始答题了
 			var ResultObj = {
-				Mobile:format_mobile(user.Mobile),
-				Name:format_name(user.Name),
+				Mobile:utils.format_mobile(user.Mobile),
+				Name:utils.format_name(user.Name),
 				UserId:user._id,
 				Ip:ip,
 				RTypeId:global.TypeId,
@@ -117,7 +121,7 @@ RiddleBL.GetRiddle = function(tokenid, ip, cb){ //根据tokenid获取一次答�
 					logger.error(err);
 					return callback(ERR_DB);
 				}
-
+				result = doc;
 				callback()
 			})
 		},
@@ -126,6 +130,9 @@ RiddleBL.GetRiddle = function(tokenid, ip, cb){ //根据tokenid获取一次答�
 			return cb(err);
 		}
 		var RiddleAry = []
+		if(!ChoseRiddle){
+			return cb(ERR_GENERROR);
+		}
 		ChoseRiddle.forEach(function(v){
 			RiddleAry.push({
 				PicUrl:v.PicUrl,
@@ -161,13 +168,13 @@ ERR_BAD_ANSWER_ORDER = '无效的答题,答题顺序错误'
 
 RiddleBL.Answer = function(obj,cb){
 	var AnswerObj = {
-		RId:obj.RId || '',
+		//RId:obj.RId || '',
 		Answer:obj.Answer||'',
 		Pos:obj.Pos||'',
 		ResultId:obj.ResultId||'',
 		TokenId:obj.TokenId||''
 	}
-	if(!AnswerObj.RId || !AnswerObj.Answer || (AnswerObj.Pos<0 || AnswerObj.Pos>= global.RiddleNumber) 
+	if( !AnswerObj.Answer || (AnswerObj.Pos<0 || AnswerObj.Pos>= global.RiddleNumber) 
 		|| !AnswerObj.ResultId || !AnswerObj.TokenId){
 		return cb(ERR_BAD_ANSWER)
 	}
@@ -181,6 +188,7 @@ RiddleBL.Answer = function(obj,cb){
 	async.series([
 		function(callback){
 			TokenDl.FindById(AnswerObj.TokenId, function(err,doc){ //根据tokenid查找到用户id
+				console.log(doc)
 				if(err){
 					logger.error(err);
 					return callback(ERR_DB);
@@ -210,10 +218,7 @@ RiddleBL.Answer = function(obj,cb){
 					logger.error(ERR_BAD_ANSWER_REPEAT);
 					return callback(ERR_BAD_ANSWER_REPEAT);
 				}
-				if(doc.Detail[AnswerObj.Pos].RId !== AnswerObj.RId){ //如果此题的id不是用户回答的题目id
-					logger.error(ERR_BAD_ANSWER_RID);
-					return callback(ERR_BAD_ANSWER_RID);
-				}
+
 				if(doc.Status !== 0){ //如果整个答题记录已经答过了
 					logger.error(ERR_BAD_ANSWER_STATUS);
 					return callback(ERR_BAD_ANSWER_STATUS);
@@ -223,7 +228,7 @@ RiddleBL.Answer = function(obj,cb){
 			})
 		},
 		function(callback){ 
-			RiddleDl.FindById(AnswerObj.RId, function(err, doc){ //根据id找到题目的详细信息
+			RiddleDl.FindById(result.Detail[AnswerObj.Pos].RId, function(err, doc){ //根据id找到题目的详细信息
 				if(err){
 					logger.error(err);
 					return callback(ERR_DB);
@@ -262,7 +267,8 @@ RiddleBL.Answer = function(obj,cb){
 			return cb(null, false);
 		}
 
-		if(AnswerObj.Pos === global.RiddleNumber - 1){ //如果是回答最后一题
+
+		if(AnswerObj.Pos - 0 === global.RiddleNumber - 1){ //如果是回答最后一题
 
 			var CheckPrevWrong = false
 			result.Detail.forEach(function(v,i){ //如果企图跳过前面直接答最后一题,发现前面没答,则报错
@@ -288,7 +294,7 @@ RiddleBL.Answer = function(obj,cb){
 					logger.error(err);
 					return callback(ERR_DB);
 				}
-				cb(null, doc);
+				cb(null, ResultObj);
 			})
 
 		}

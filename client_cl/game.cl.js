@@ -6,7 +6,7 @@ var utils = require('../utils/utils.js');
 
 var game = {}
 
-game.result = function(req,res){
+game.Result = function(req,res){
 
 	var token = req.query.token;
 
@@ -17,7 +17,7 @@ game.result = function(req,res){
 
 }
 
-game.rank = function(req,res){
+game.Rank = function(req,res){
 
 	RankBL.GetRank(function(err,doc){
 		if(err) return res.json( utils.AddJsonResult({},0,err) );
@@ -26,7 +26,7 @@ game.rank = function(req,res){
 
 }
 
-game.start = function(req,res){
+game.Start = function(req,res){
 
 	var token = req.query.token;
 	var ip = req.ip;
@@ -38,15 +38,15 @@ game.start = function(req,res){
 }
 
 
-game.answer = function(req,res){
+game.Answer = function(req,res){
 
 	var obj = {
-		RId:req.body.rid,
 		Answer:req.body.answer||'',
 		Pos:req.body.pos||'',
 		ResultId:req.body.resultid||'',
-		TokenId:req.body.tokenid||''
+		TokenId:req.body.token||''
 	}
+
 
 	RiddleBL.Answer(obj, function(err, doc){
 		if(err) return res.json( utils.AddJsonResult({},0,err) );
@@ -64,3 +64,15 @@ game.answer = function(req,res){
 module.exports = game
 
 
+var loop = function(){
+
+	RankBL.DelRank(function(err, res){
+		if(err) return logger.error(err);
+		logger.info('clear rank done')
+		RankBL.Update(function(err){
+			if(err) return logger.error(err);
+			logger.info('update rank done')
+		})
+	})
+	return arguments.callee;
+}()

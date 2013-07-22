@@ -7,13 +7,21 @@ var utils = require('../utils/utils.js');
 
 var CheckDeveice = function(req, res, next){ //判断请求头的设备
 
+
+	res.setHeader("Access-Control-Allow-Origin", "*");
+	res.setHeader("Access-Control-Allow-Methods", "*");
+	res.setHeader("Access-Control-Allow-Headers", "*");
+	
 	next();
 }
 
 
 var GetUserByToken = function(req, res, next){ //根据token获得用户id
-	var token = req.query.token
+	var token = req.query.token || req.body.token 
 	if(token){
+		if(token.length !== 24) return res.json( utils.AddJsonResult({},0, "invalid token length") );
+		if(!/^[0-9a-zA-Z]+$/.test(token)) return res.json( utils.AddJsonResult({},0, "invalid format token") );
+
 		UserBl.GetUserByTokenId(token, function(err, doc){
 			if(err) return res.json( utils.AddJsonResult({},0,err) );
 			if(!doc._id) return res.json( utils.AddJsonResult({},0, "invalid token") );
