@@ -98,7 +98,15 @@ RiddleBL.GetRiddle = function(tokenid, ip, cb){ //根据tokenid获取一次答�
 					logger.error(err);
 					return callback(ERR_DB);
 				}
-				ChoseRiddle = doc;
+				var doc_tmp_array = [];
+				ChoseRidArray.forEach(function(v_Rid){
+					doc.forEach(function(v_doc){
+						if(v_Rid == v_doc._id+''){
+							doc_tmp_array.push(v_doc)
+						}
+					})
+				})
+				ChoseRiddle = doc_tmp_array;
 				callback()
 			})
 		},
@@ -138,7 +146,8 @@ RiddleBL.GetRiddle = function(tokenid, ip, cb){ //根据tokenid获取一次答�
 				PicUrl:v.PicUrl,
 				Title:v.Title,
 				Content:v.Content,
-				ResultId:result._id
+				ResultId:result._id,
+				Type:v.QType
 			})
 		})
 		cb(null, RiddleAry);
@@ -176,6 +185,7 @@ RiddleBL.Answer = function(obj,cb){
 	}
 	if( !AnswerObj.Answer || (AnswerObj.Pos<0 || AnswerObj.Pos>= global.RiddleNumber) 
 		|| !AnswerObj.ResultId || !AnswerObj.TokenId){
+
 		return cb(ERR_BAD_ANSWER)
 	}
 
@@ -188,7 +198,7 @@ RiddleBL.Answer = function(obj,cb){
 	async.series([
 		function(callback){
 			TokenDl.FindById(AnswerObj.TokenId, function(err,doc){ //根据tokenid查找到用户id
-				console.log(doc)
+
 				if(err){
 					logger.error(err);
 					return callback(ERR_DB);
@@ -233,6 +243,7 @@ RiddleBL.Answer = function(obj,cb){
 					logger.error(err);
 					return callback(ERR_DB);
 				}
+
 				if(AnswerObj.Answer === doc.Answer){ //匹配答案是否正确
 					IsAnswerTrue = true;
 				}
@@ -281,6 +292,8 @@ RiddleBL.Answer = function(obj,cb){
 			
 			var s_ts = Date.parse(result.StartTime);
 			var e_ts = Date.now();
+			//console.log(s_ts)
+			//console.log(e_ts)
 
 			var ResultObj = {
 				EndTime:e_ts,

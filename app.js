@@ -11,7 +11,8 @@ var config = require('./config/config.js');
 
 
   app.use(ifile.connect([
-	  	["/c_skin", __dirname+'/client'],
+	  	["/static", __dirname],
+	  	["/riddle", __dirname+'/upload'],
 	  	["/m_skin", __dirname+'/manger']
   	]));
 

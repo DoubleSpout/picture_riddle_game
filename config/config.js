@@ -12,7 +12,7 @@ log4js.configure({
 global.logger = log4js.getLogger('cheese');
 global.Md5Key = utils.md5('szhouse');
 global.TypeId = '51dea3927bf3003c0b000002';
-global.RiddleNumber = 1;
+global.RiddleNumber = 3;
 global.IpMaxResult = 100;
 global.IpMaxReg = 1000;
 

@@ -47,7 +47,6 @@ game.Answer = function(req,res){
 		TokenId:req.body.token||''
 	}
 
-
 	RiddleBL.Answer(obj, function(err, doc){
 		if(err) return res.json( utils.AddJsonResult({},0,err) );
 		if("object" === typeof doc){
