@@ -1,5 +1,5 @@
 var utils = require('../utils/utils.js');
-
+var path = require('path')
 
 if(process.env.BAE_ENV_APPID){ //如果是bae则使用console
 	global.logger = {}
@@ -15,7 +15,7 @@ else{ //不是bae使用log4js
 		log4js.configure({
 		  appenders: [
 		    { type: 'console' },
-		    { type: 'file', filename: 'logs/cheese.log', category: 'cheese' }
+		    { type: 'file', filename: path.join(__dirname,'..','logs/cheese.log'), category: 'cheese' }
 		  ]
 		});
 		global.logger = log4js.getLogger('cheese');
