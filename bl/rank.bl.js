@@ -1,4 +1,3 @@
-
 var RankDl = require('../dl/rank.dl.js');
 var ResultDl = require('../dl/result.dl.js');
 var async = require('async');

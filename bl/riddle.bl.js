@@ -1,5 +1,6 @@
 
 var RiddleDl = require('../dl/riddle.dl.js');
+var RiddleTypeDl = require('../dl/riddle_type.dl.js');
 var ResultDl = require('../dl/result.dl.js');
 var UserDl = require('../dl/user.dl.js');
 var TokenDl = require('../dl/token.dl.js');
@@ -32,6 +33,7 @@ RiddleBL.GetRiddle = function(tokenid, ip, cb){ //根据tokenid获取一次答�
 
 	async.series([
 		function(callback){
+			
 			ResultDl.CountIpOneDay(ip, function(err,num){ //根据ip地址查询此ip24小时内回答题目数
 				if(err){
 					logger.error(err);
@@ -45,6 +47,7 @@ RiddleBL.GetRiddle = function(tokenid, ip, cb){ //根据tokenid获取一次答�
 			})
 		},
 		function(callback){
+			
 			TokenDl.FindById(tokenid, function(err,doc){ //根据tokenid查找到用户id
 				if(err){
 					logger.error(err);
@@ -58,6 +61,7 @@ RiddleBL.GetRiddle = function(tokenid, ip, cb){ //根据tokenid获取一次答�
 			})
 		},
 		function(callback){
+			
 			UserDl.FindById(token.UserId, function(err,doc){ //根据用户id查找到用户信息
 				if(err){
 					logger.error(err);
@@ -72,17 +76,21 @@ RiddleBL.GetRiddle = function(tokenid, ip, cb){ //根据tokenid获取一次答�
 			})
 		},
 		function(callback){
+
 			RiddleDl.FindAllIdByTypeId(global.TypeId, function(err,doc){ //获取此typeid下所有题目id的数组
 				if(err){
 					logger.error(err);
 					return callback(ERR_DB);
 				}		
+				
 				RidArray = doc
 				callback();
 			})
 		},
 		function(callback){ //根据所有题目id,随机抽取出n道题目的id
+
 			var n = global.RiddleNumber;
+
 			while(n--){
 				var len = RidArray.length;
 				var r = Math.floor(Math.random()*len);
@@ -92,7 +100,7 @@ RiddleBL.GetRiddle = function(tokenid, ip, cb){ //根据tokenid获取一次答�
 			callback()
 		},
 		function(callback){ //根据将抽取出的n道题目的id，找到这些题目的信息
-
+			
 			RiddleDl.FindByIdArray(ChoseRidArray, function(err, doc){
 				if(err){
 					logger.error(err);
@@ -111,6 +119,7 @@ RiddleBL.GetRiddle = function(tokenid, ip, cb){ //根据tokenid获取一次答�
 			})
 		},
 		function(callback){ //将信息插入到答题记录集合,表示此用户开始答题了
+			
 			var ResultObj = {
 				Mobile:utils.format_mobile(user.Mobile),
 				Name:utils.format_name(user.Name),
@@ -134,6 +143,7 @@ RiddleBL.GetRiddle = function(tokenid, ip, cb){ //根据tokenid获取一次答�
 			})
 		},
 	],function(err,res){//将n道题目去除答案等信息返回给用户
+		
 		if(err){
 			return cb(err);
 		}
@@ -150,6 +160,7 @@ RiddleBL.GetRiddle = function(tokenid, ip, cb){ //根据tokenid获取一次答�
 				Type:v.QType
 			})
 		})
+		
 		cb(null, RiddleAry);
 	})
 	
@@ -319,5 +330,33 @@ RiddleBL.Answer = function(obj,cb){
 
 	
 }
+
+
+//初始化type类型id
+if(!global.TypeId){ //如果没指定global.typeid
+
+	RiddleTypeDl.GetFirstTypeId(function(err,doc){
+		if(err){
+			return logger.error(err);
+		}
+		
+		if(!doc || doc.length == 0){
+			RiddleTypeDl.Add({Name:'题库类型auto', Desc:'题库类型自动加入'}, function(err, doc){
+					if(err){
+						return logger.error(err);
+					}
+
+					global.TypeId = doc._id
+			})
+		}
+		else{
+			global.TypeId = doc._id
+		}
+
+	})
+
+}
+
+
 
 module.exports = RiddleBL;

@@ -64,7 +64,6 @@ module.exports = game
 
 
 var loop = function(){
-
 	RankBL.DelRank(function(err, res){
 		if(err) return logger.error(err);
 		logger.info('clear rank done')
@@ -74,4 +73,13 @@ var loop = function(){
 		})
 	})
 	return arguments.callee;
-}()
+}
+
+setTimeout(function(){ //可能typeid还没准备好，过1分钟之后再执行排行
+	console.log(global.TypeId)
+	loop();
+},1000*30)
+
+setInterval(function(){
+	loop();
+},1000*60*60)

@@ -95,4 +95,4 @@ text-shadow: -1px -1px 0 rgba(0,0,0,.2);
 #carousel li.pane5 { background-color: #9fe1e7 !important; }
 
 .r_ul { display:block; position:absolute; top:50; left:0; padding:0;}
-.r_ul li { float:left; width:100%; padding:0 20px; height:490px; overflow:hidden; }
+.r_ul li { float:left; width:100%; padding:0 20px; height:490px; overflow-x:hidden; }

@@ -39,6 +39,12 @@ Riddle_Type.statics.FindAll = function(cb){
              .exec(cb);
 }
 
+Riddle_Type.statics.GetFirstTypeId = function(cb){
+  return this.findOne({})
+             .sort({"_id":-1})
+             .exec(cb);
+}
+
 
 module.exports = mongoose.model('Riddle_Type', Riddle_Type);
 
