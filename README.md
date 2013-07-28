@@ -9,7 +9,7 @@
 
 #运行
 
-	require('pic_riddle_game');
+	require('riddle');
 
 或者
 	
