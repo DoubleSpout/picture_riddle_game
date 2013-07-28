@@ -16,8 +16,8 @@ var RIDDLE_SELECT = '<a href="javascript:;" name="RiddleSelA" data-role="button"
 var RIDDLE_RESULT = '<li><div class="li_box li_last_box"><h3 class="blue-t">恭喜您全部答题成功</h3>'+
         			'<h3>本次答题时间:<span id="r_result_score"></span>秒</h3>'+
 					'<a href="result.html" data-ajax="false" data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" class="ui-btn ui-corner-bottom ui-controlgroup-last ui-btn-up-c"><span class="ui-btn-inner ui-corner-bottom ui-controlgroup-last"><span class="ui-btn-text">查看我的答题记录</span></span></a>'+
-          			'<a href="rank.html" data-ajax="false" data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" class="ui-btn ui-corner-bottom ui-controlgroup-last ui-btn-up-c"><span class="ui-btn-inner ui-corner-bottom ui-controlgroup-last"><span class="ui-btn-text">查看答题排行榜</span></span></a>'+
-					'<a href="javascript:;" data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="b" class="ui-btn ui-corner-bottom ui-controlgroup-last ui-btn-up-b"><span class="ui-btn-inner ui-corner-bottom ui-controlgroup-last"><span class="ui-btn-text" id="riddle_weibo">分享到微博</span></span></div><a></li>'
+          			'<a href="rank.html" data-ajax="false" data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" class="ui-btn ui-corner-bottom ui-controlgroup-last ui-btn-up-c"><span class="ui-btn-inner ui-corner-bottom ui-controlgroup-last"><span class="ui-btn-text">查看答题排行榜</span></span></a>'
+					//'<a href="javascript:;" data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="b" class="ui-btn ui-corner-bottom ui-controlgroup-last ui-btn-up-b"><span class="ui-btn-inner ui-corner-bottom ui-controlgroup-last"><span class="ui-btn-text" id="riddle_weibo">分享到微博</span></span></div><a></li>'
  
 function riddle_load(that){
 	
