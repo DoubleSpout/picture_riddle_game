@@ -34,7 +34,6 @@ var config_obj = {
 	"admin":"admin",
 	"password":"admin",
 	"db_connection1":"mongodb://root:123456@127.0.0.1:27017/riddle",
-	"db_connection2":"mongodb://root:123456@127.0.0.1:27017/riddle",
 	"poolsize":5
 
 }
