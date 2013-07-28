@@ -1,6 +1,6 @@
 # picture riddle game
 # 安装方法：
-	npm install pic_riddle_game
+	npm install riddle
 #配置
 修改 pic_riddle_game/config/config.js 大约36行的mongodb连接代码
 
