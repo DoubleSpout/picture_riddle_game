@@ -303,8 +303,9 @@ RiddleBL.Answer = function(obj,cb){
 			
 			var s_ts = Date.parse(result.StartTime);
 			var e_ts = Date.now();
-			//console.log(s_ts)
-			//console.log(e_ts)
+			console.log(result._id)
+			console.log(s_ts)
+			console.log(e_ts)
 
 			var ResultObj = {
 				EndTime:e_ts,

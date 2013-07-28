@@ -9,7 +9,7 @@ var Riddle = new Schema({ //定义结构
   Title:{type:String, required:true},    //题目的问题标题或问题
   Content:{type:String, default: '[]'},    //如果是填空题,这里为空,如果是选择题则是json字符串["答案1"，"答案2",...]
   Answer: { type: String, required:true}, //题目描述
-  InputTime:{type: Date, default: Date.now()}  //题目录入时间
+  InputTime:{type: Date,  default: function(){return Date.now()} }  //题目录入时间
 })
 
 

@@ -10,7 +10,7 @@ var Rank = new Schema({ //定义结构
   Time:{ type: Date, required:true},            //此次答题的时间
   RTypeId:{type: String, required:true},     //这个排行榜的类型id
   IsCheet:{type: Number, default:0},			    //是否作弊0表示未作弊，1表示作弊
-  InputTime:{type: Date, default: Date.now()}  //插入数据的时间
+  InputTime:{type: Date, default: function(){return Date.now()} }  //插入数据的时间
 })
 
 

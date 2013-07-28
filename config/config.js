@@ -32,7 +32,7 @@ global.IpMaxReg = 1000;
 var config_obj = {
 	"listen_port":process.env.APP_PORT || 8000,
 	"admin":"admin",
-	"password":"admin",
+	"password":"2138ab8894026ad0cb6107f807cf6e2b",
 	"db_connection1":"mongodb://root:123456@127.0.0.1:27017/riddle",
 	"db_connection2":"mongodb://root:123456@127.0.0.1:27017/riddle",
 	"poolsize":5

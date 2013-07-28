@@ -5,11 +5,11 @@ var mongoose =require('./db_conn.js'),
 var UserSchema = new Schema({ //定义结构
   Mobile: { type: String, required:true, unique: true},   //用户手机号码
   Name: { type: String, required:true},     //用户真实姓名
-  RegTime: { type: Date, default: Date.now() },    //用户注册时间
+  RegTime: { type: Date, default: function(){return Date.now()} },    //用户注册时间
   RegIp:{type: String, default: '0.0.0.0' },        //用户注册ip地址
   LoginTimes: { type: Number, default: 1 },        //登录次数
   Agent:{type: String, default: 'other'},           //用户登录设备
-  LastLoginTime: { type: Date, default: Date.now() }    //上一次登录时间
+  LastLoginTime: { type: Date, default: function(){return Date.now()} }    //上一次登录时间
 })
 
 

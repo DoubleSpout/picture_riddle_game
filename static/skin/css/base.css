@@ -2,6 +2,9 @@
 .clear{zoom:1;}
 .clear:after{clear:both;content:'';display:block;}
 .r-slider-content { padding:20px;}
+.r_ul .ui-btn { z-index:99; width:45%;margin: .2em;}
+.r_ul .li_last_box .ui-btn { width:100%;margin: .5em;}
+.r_ul p { margin:.5em}
 
 label.ui-input-text {line-height: 2.3;}
 .r_logo { width:100%; height:50px; padding:5px 0; text-align:center}
@@ -14,7 +17,7 @@ input.ui-input-text, textarea.ui-input-text { text-indent:0.5em !important}
 .main_icon:active { opacity:0.8; background-color:#ccc}
 
 .r-main-h2 { border-bottom:#555 1px solid; padding:0 0 5px 0}
-.r_page { min-height:400px; overflow-x:hidden !important; position:relative !important;}
+.r_page { min-height:500px; overflow:hidden !important; position:relative !important;}
 .r_version { text-align:right;}
 .r_riddle_pic {text-align:center; height:150px; width:100%; cursor:pointer; overflow:hidden;}
 .r_riddle_pic img { max-height:150px; max-width:100%;}
@@ -25,10 +28,11 @@ input.ui-input-text, textarea.ui-input-text { text-indent:0.5em !important}
 .r_big_pic_box { text-align:center; width:100%; height:100%; position:absolute; top:0; left:0; background:rgba(54, 54, 54, 0.5); z-index:99;line-height:100% }
 .r_big_pic_box img { vertical-align:middle;}
 
+.r_content {height:100%; overflow:hidden; padding:0;}
 .blue-t { color:#3373a5 }
-.r_rank { height:100%; overflow:auto}
+.r_rank { height:100%; overflow:auto; padding:5px 15px;}
 .r_table td { text-align:center; padding:5px; font-size:12px;}
-
+.r_home { padding:0 15px; overflow:auto !important;}
 
 #carousel, #carousel ul, #carousel li {
 min-height: 100%;
@@ -89,10 +93,13 @@ text-shadow: -1px -1px 0 rgba(0,0,0,.2);
 }
 
 #carousel li.pane1 { background-color: #42d692 !important; }
+/*
 #carousel li.pane2 { background-color: #4986e7 !important; }
 #carousel li.pane3 { background-color: #d06b64 !important; }
 #carousel li.pane4 { background-color: #cd74e6 !important; }
 #carousel li.pane5 { background-color: #9fe1e7 !important; }
-
+*/
 .r_ul { display:block; position:absolute; top:50; left:0; padding:0;}
-.r_ul li { float:left; width:100%; padding:0 20px; height: auto !important; max-height:600px; overflow-x:hidden; }
+.r_ul li { float:left; width:100%; padding:0; height: 550px !important;  overflow:hidden; text-align:center; }
+.r_ul .ui-input-text { padding:.5em 0 !important;}
+.li_box { padding:0 15px;}

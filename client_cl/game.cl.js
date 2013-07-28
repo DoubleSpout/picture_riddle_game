@@ -76,7 +76,7 @@ var loop = function(){
 }
 
 setTimeout(function(){ //可能typeid还没准备好，过1分钟之后再执行排行
-	console.log(global.TypeId)
+	
 	loop();
 },1000*30)
 

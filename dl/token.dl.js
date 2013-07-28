@@ -4,7 +4,7 @@ var mongoose =require('./db_conn.js'),
 
 var UserToken = new Schema({ //定义结构
   UserId: { type: String, required:true},     //用户id
-  InputTime:{type: Date, default: Date.now()}  //写入时间
+  InputTime:{type: Date, default: function(){return Date.now()} }  //写入时间
 })
 
 

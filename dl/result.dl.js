@@ -13,7 +13,7 @@ var Result = new Schema({ //定义结构
       UserId:{type:String, required:true},   		 //答题用户的_id号
       Ip:{type:String,default: '0.0.0.0'},   		 //答题用户此次答题ip地址
       Status: { type: Number, default:0}, 			//此次答题的状态0表示还未答完,1表示已经答完
-      StartTime:{type: Date, default: Date.now()},  //开始答题时间
+      StartTime:{type: Date, default: function(){return Date.now()} },  //开始答题时间
       EndTime:{type: Date, default: ''},            //结束答题时间
       Score:{type: Number, default:0},              //答题的秒数
       Detail:[DetailSchema],                         //此次答题的详细信息,那些答过,那些未答
