@@ -27,8 +27,8 @@ RankBL.GetRank = function(cb){
 						Mobile:v.Mobile,
 						Name:v.Name,
 						Score:v.Score,
-						Time:v.Time,
-						InputTime:v.InputTime
+						Time:Date.parse(v.Time),
+						InputTime:Date.parse(v.InputTime)
 					})
 				})
 				

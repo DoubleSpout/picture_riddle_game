@@ -95,6 +95,11 @@ Result.statics.FindAll = function(cb){
              .exec(cb);
 }
 
+Result.statics.DelExpire = function(cb){ //清除4小时前未完成的答题记录，减少空间损失
+
+  return this.remove({Status:0, StartTime:{"$lt":+Date.now() - 4*60*60*1000}}, cb);
+}
+
 module.exports = mongoose.model('Result', Result);
 
 

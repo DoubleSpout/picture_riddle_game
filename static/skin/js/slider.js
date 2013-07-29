@@ -174,7 +174,7 @@ $(function(){
 		"skin/test/home_bg.jpg",
 		""
 	];
-	var go_btn = '<div data-role="content" class="r-slider-content"><h3>看图猜迷游戏大奖等你拿！<br/>赶快来体验吧！</h3><a href="main.html" data-role="button" data-ajax="false" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="b" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-up-b"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">立即体验，看图猜迷游戏</span></span></a></div>'
+	var go_btn = '<div data-role="content" class="r-slider-content"><h3>看图猜迷游戏大奖等你拿！<br/>赶快来体验吧！</h3><a href="main.html"  data-ajax="false" id="last_btn"  class="ui-btn ui-shadow ui-btn-corner-all ui-btn-up-b"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">立即体验，看图猜迷游戏</span></span></a></div>'
 	
 	var PicArrayLen = PicArray.length;
 	var liStr = ''
@@ -190,6 +190,7 @@ $(function(){
 					 .css("background-repeat","no-repeat")
 					 .css("background-position", "center 25%")
 					 .last().html(go_btn)
+                     .find('#last_btn').css('z-index', 99)
 
     carousel.init();
 })

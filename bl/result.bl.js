@@ -52,7 +52,7 @@ ResultBL.GetRecordByTokenId = function(tokenid, cb){
 			resultArray.push(
 				{
 					Score:v.Score,
-					EndTime:v.EndTime,
+					EndTime:Date.parse(v.EndTime),
 					Mobile:utils.format_mobile(v.Mobile),
 					Name:utils.format_name(v.Name)				
 				}
@@ -61,5 +61,12 @@ ResultBL.GetRecordByTokenId = function(tokenid, cb){
 		cb(null, resultArray);
 	})
 }
+
+
+//删除过期的超过4小时答题记录
+ResultBL.DelExpire = function(cb){
+	ResultDl.DelExpire(cb);
+}	
+
 
 module.exports = ResultBL;

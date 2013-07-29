@@ -72,13 +72,18 @@ var loop = function(){
 			logger.info('update rank done')
 		})
 	})
+	ResultBL.DelExpire(function(err,res){
+		if(err) return logger.error(err);
+		return logger.info('删除无效记录条数：'+res);
+
+	})
 	return arguments.callee;
 }
 
 setTimeout(function(){ //可能typeid还没准备好，过1分钟之后再执行排行
 	
 	loop();
-},1000*30)
+},1000*10)
 
 setInterval(function(){
 	loop();

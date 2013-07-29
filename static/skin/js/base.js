@@ -86,10 +86,11 @@ $(function(){
 	
 	//main
 	if($('#main_name').length>0){
+
 		$('#main_name').html(localStorage.name);
 		$('#main_mobile').html(localStorage.mobile)	
 		$('#r_logout').click(function(){		
-			ajax_send('get','/client/user/logout?token='+localStorage.token, {}, function(err,d){
+			ajax_send('get','/client/user/logout?token='+localStorage.token+'&r='+Date.now(), {}, function(err,d){
 					clearlocalStorage();
 					location.href = window.hostname + '/'						
 			})
@@ -98,7 +99,7 @@ $(function(){
 	
 	//rank
 	if($('#r_rank_table').length>0){
-		ajax_send('get', '/client/game/rank?token='+localStorage.token, {}, function(err,d){
+		ajax_send('get', '/client/game/rank?token='+localStorage.token+'&r='+Date.now(), {}, function(err,d){
 				if(err){
 					return alert(err)
 				}
@@ -121,7 +122,7 @@ $(function(){
 	
 	//result
 	if($('#r_result_table').length>0){
-		ajax_send('get', '/client/game/result?token='+localStorage.token, {}, function(err,d){
+		ajax_send('get', '/client/game/result?token='+localStorage.token+'&r='+Date.now(), {}, function(err,d){
 				if(err){
 					return alert(err)
 				}
