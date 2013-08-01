@@ -7,8 +7,8 @@ var config = require('./config/config.js');
   app.set('view engine', 'ejs');
 
 if(process.env.BAE_ENV_APPID){
-	app.use('/static', express.static(__dirname + '/static'));
-	app.use('/riddle', express.static(__dirname + '/upload/riddle'));
+	//app.use('/static', express.static(__dirname + '/static'));
+	//app.use('/riddle', express.static(__dirname + '/upload/riddle'));
 	app.use('/m_skin', express.static(__dirname + '/manger/m_skin'));
 	
 }

@@ -19,13 +19,15 @@ var RIDDLE_RESULT = '<li><div class="li_box li_last_box"><h3 class="blue-t">恭�
           			'<a href="rank.html" data-ajax="false" data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" class="ui-btn ui-corner-bottom ui-controlgroup-last ui-btn-up-c"><span class="ui-btn-inner ui-corner-bottom ui-controlgroup-last"><span class="ui-btn-text">查看答题排行榜</span></span></a>'
 					//'<a href="javascript:;" data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="b" class="ui-btn ui-corner-bottom ui-controlgroup-last ui-btn-up-b"><span class="ui-btn-inner ui-corner-bottom ui-controlgroup-last"><span class="ui-btn-text" id="riddle_weibo">分享到微博</span></span></div><a></li>'
  
+window.hasLoadPic = false;
 function riddle_load(that){
 	
 
 	if(!--window.r_num){
 				
 		$.mobile.hidePageLoadingMsg();
-		$('#r_page').show()		
+		$('#r_page').show();
+		window.hasLoadPic = true;
 	}
 }	
 
@@ -175,6 +177,12 @@ $(function(){
 	}()
 	
 	
+	setTimeout(function(){
+		if(!window.hasLoadPic){
+			alert('网络不给力，图片加载失败');
+			location.href = 'main.html';	
+		}
+	},1000*60)
 })
 
 
