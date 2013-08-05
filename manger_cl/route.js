@@ -70,12 +70,12 @@ var MangerRouteArray = [
 
 
 	//题库内容
-	["get:/manger/riddle/list", CheckLogin, RiddleCl.list],
-	["post:/manger/riddle/read/", CheckLogin, RiddleCl.read],
-	["post:/manger/riddle/update/", CheckLogin, RiddleCl.update],
-	["post:/manger/riddle/destory/", CheckLogin, RiddleCl.destory],
-	["post:/manger/riddle/create/", CheckLogin, RiddleCl.create],
-	["post:/manger/riddle/upload", CheckLogin, RiddleCl.upload],
+	["get:/manger/riddles/list", CheckLogin, RiddleCl.list],
+	["post:/manger/riddles/read/", CheckLogin, RiddleCl.read],
+	["post:/manger/riddles/update/", CheckLogin, RiddleCl.update],
+	["post:/manger/riddles/destory/", CheckLogin, RiddleCl.destory],
+	["post:/manger/riddles/create/", CheckLogin, RiddleCl.create],
+	["post:/manger/riddles/upload", CheckLogin, RiddleCl.upload],
 ]
 
 

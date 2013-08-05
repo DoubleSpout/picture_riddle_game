@@ -11,6 +11,7 @@ var Riddle = {}
 
 
 Riddle.list = function(req,res){
+	console.log('list list list')
 	RiddleTypeDL.FindAll(function(err,doc){
 		if(err) return res.send(500);
 

@@ -15,7 +15,7 @@
     	<% }%>
     </select></label>
   </p>
-<form id="PicUploadForm" action="/manger/riddle/upload" method="post" enctype="multipart/form-data" target="uploadfile">
+<form id="PicUploadForm" action="/manger/riddles/upload" method="post" enctype="multipart/form-data" target="uploadfile">
   <p>
     <label>上传图片: <input id="file" type="file" name="file" value="" /></label>
   </p>
@@ -52,15 +52,15 @@
                     dataSource = new kendo.data.DataSource({
                         transport: {
                             read:  {
-                                url: DataHost + "/manger/riddle/read",
+                                url: DataHost + "/manger/riddles/read",
                                 type: "post"
                             },
                             edit: {
-                                url: DataHost + "/manger/riddle/update",
+                                url: DataHost + "/manger/riddles/update",
                                 type: "post"
                             },
                              create: {
-                                url: DataHost + "/manger/riddle/create",
+                                url: DataHost + "/manger/riddles/create",
                                 type: "post"
                             },
                             parameterMap: function(options, operation) {
@@ -156,7 +156,7 @@
                     filterable:true,
                     remove: function(e) {
 
-						    $.post(DataHost + "/manger/riddle/destory", {_id:e.model._id},function(d){
+						    $.post(DataHost + "/manger/riddles/destory", {_id:e.model._id},function(d){
 						    	if(d.error) return alert(d.error);
 						    	alert('ok')
 						    },'json')

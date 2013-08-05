@@ -65,12 +65,12 @@ var addroute = function(app){
 	app.post('/manger/riddle_type/create', CheckLogin, RiddleTypeCl.create)
 
 	//题库内容
-	app.get('/manger/riddle/list', CheckLogin, RiddleCl.list)
-	app.post('/manger/riddle/read', CheckLogin, RiddleCl.read)
-	app.post('/manger/riddle/update', CheckLogin, RiddleCl.update)
-	app.post('/manger/riddle/destory', CheckLogin, RiddleCl.destory)
-	app.post('/manger/riddle/create', CheckLogin, RiddleCl.create)
-	app.post('/manger/riddle/upload', CheckLogin, RiddleCl.upload)
+	app.get('/manger/riddles/list', CheckLogin, RiddleCl.list)
+	app.post('/manger/riddles/read', CheckLogin, RiddleCl.read)
+	app.post('/manger/riddles/update', CheckLogin, RiddleCl.update)
+	app.post('/manger/riddles/destory', CheckLogin, RiddleCl.destory)
+	app.post('/manger/riddles/create', CheckLogin, RiddleCl.create)
+	app.post('/manger/riddles/upload', CheckLogin, RiddleCl.upload)
 
 
 }
