@@ -353,6 +353,37 @@ if(!global.TypeId){ //如果没指定global.typeid
 
 	})
 
+	//默认将没有picurl的题目填充picurl字段
+	RiddleDl.FindAllNoPicUrl(function(err, doc){
+		if(err) return logger.error(err);
+		if(!doc || doc.length>0){
+			var async_array=[];
+
+			doc.forEach(function(v,i){
+				async_array.push(
+					(function(doc_v){
+						return function(callback){
+							RiddleDl.ModifyById(doc_v._id, {PicUrl:'/riddle/'+doc_v._id+'.jpg'}, function(err){
+								callback(err);
+							})
+						}
+					})(v)
+				)
+			})
+
+			async.series(async_array,function(err){
+				if(err){
+					return logger.error('update empty riddle picurl err: '+err);
+				}
+				logger.info('update empty riddle picurl complete')
+			})
+
+		}
+		else{
+			logger.info('no empty riddle picurl')
+		}
+	})
+
 }
 
 

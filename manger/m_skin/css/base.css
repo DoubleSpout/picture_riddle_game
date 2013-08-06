@@ -22,3 +22,9 @@ padding: 9px 0;
 .k-window {
 	webkit-transform:scale(1.01) !important;
 }
+.pic_test_box img {
+	display: inline-block;
+	width: 100px;
+	margin: 10px;
+
+}

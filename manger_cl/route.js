@@ -76,8 +76,11 @@ var MangerRouteArray = [
 	["post:/manger/riddles/destory/", CheckLogin, RiddleCl.destory],
 	["post:/manger/riddles/create/", CheckLogin, RiddleCl.create],
 	["post:/manger/riddles/upload", CheckLogin, RiddleCl.upload],
-]
 
+	//检查题库图片是否正常显示
+	["get:/manger/pic/test", CheckLogin, RiddleCl.test],
+	["get:/manger/pic/list", CheckLogin, RiddleCl.list_test],
+]
 
 
 module.exports = MangerRouteArray;

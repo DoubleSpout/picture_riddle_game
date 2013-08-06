@@ -54,6 +54,13 @@ Riddle.statics.FindAll = function(cb){
              .exec(cb);
 }
 
+Riddle.statics.FindAllNoPicUrl = function(cb){
+  return this.find({PicUrl:''})
+             .limit(20000)
+             .sort({"_id":-1})
+             .exec(cb);
+}
+
 
 module.exports = mongoose.model('Riddle', Riddle);
 

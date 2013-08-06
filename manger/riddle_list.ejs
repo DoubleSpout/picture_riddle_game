@@ -35,6 +35,7 @@
   </p>
   <p>
     <label>Answer: <input type="text" name="Answer" value="" /></label>
+    <label>标准答案，例如:"答案1"</label>
   </p>
    <p>
     <label>PicUrl: <input type="text" name="PicUrl" value="" /></label>
@@ -102,8 +103,8 @@
                             }
                         }
                     });
-
-                $("#grid").kendoGrid({
+        
+        $("#grid").kendoGrid({
                     dataSource: dataSource,
                     navigatable: true,
                     pageable: true,
@@ -111,8 +112,8 @@
                     toolbar: [    
 					    { name: "create" }
 					],
-                    columns: [
-                        { 
+          columns: [
+            { 
 							field: "_id",
 							title: "题目id", 
 						},
@@ -146,7 +147,7 @@
 						},
 						
                         { 
-							command: ["destroy"]
+							command: ["edit","destroy"]
 						}],
                     editable: {
                     	confirmation:'确定删除吗',

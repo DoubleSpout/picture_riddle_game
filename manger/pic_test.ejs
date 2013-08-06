@@ -1,0 +1,27 @@
+<% include inc/head2 %>
+<% include inc/top %>
+<% include inc/left %>
+
+
+ <div class="pic_test_box" id="pic_test_box">
+
+ </div>
+
+<script>
+ $(function () {
+		$.get('/manger/pic/test',{r:Date.now()},function(d){
+			console.log(d);
+			if(!d || d.error || d.length<1){
+				return	alert(d.error || '加载测试图片失败，请重试')
+			}
+			var str = ''
+			d.forEach(function(v){
+				str += '<img src="/riddle/'+v._id+'.jpg?r='+Math.random()+'" onerror="alert(\'图片加载失败，id: '+v._id+'\')" title="'+v._id+'"/>';
+			})
+			$('#pic_test_box').html(str);
+
+		},'json')	 
+  })
+
+</script>
+<% include inc/foot %>

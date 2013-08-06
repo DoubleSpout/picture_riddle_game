@@ -72,6 +72,10 @@ var addroute = function(app){
 	app.post('/manger/riddles/create', CheckLogin, RiddleCl.create)
 	app.post('/manger/riddles/upload', CheckLogin, RiddleCl.upload)
 
+	//检查题库图片是否正常显示
+	app.get('/manger/pic/test', CheckLogin, RiddleCl.test)
+	app.get('/manger/pic/list', CheckLogin, RiddleCl.list_test)
+
 
 }
 

@@ -24,7 +24,7 @@ else{ //不是bae使用log4js
 
 global.Md5Key = utils.md5('szhouse');
 //global.TypeId = '制定typeid,否则自动获取'
-global.RiddleNumber = 3;
+global.RiddleNumber = 10;
 global.IpMaxResult = 100;
 global.IpMaxReg = 1000;
 

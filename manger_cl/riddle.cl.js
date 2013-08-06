@@ -11,7 +11,7 @@ var Riddle = {}
 
 
 Riddle.list = function(req,res){
-	console.log('list list list')
+
 	RiddleTypeDL.FindAll(function(err,doc){
 		if(err) return res.send(500);
 
@@ -77,17 +77,27 @@ Riddle.destory = function(req,res){
 Riddle.create = function(req,res){
 	
 	var ModelArray = req.models
+	var updateArray = [];
+
 	req.models = ModelArray.filter(function(v){
 		v.RegIp = req.ip
+		if(v._id) updateArray.push(v)
 		return !v._id
 	})	
 
+	if(req.models.length<1 && updateArray.length<1) return Riddle.read(req,res);
 
-	if(req.models.length<1) return Riddle.read(req,res);
 
+
+if(req.models.length>0){
+
+	var isLoadPicUrl = req.models.PicUrl ? 1:0;
 
 	RiddleDL.Add(req.models, function(err, doc){
 		if(err) res.json(500, { error: err });
+
+		if(!isLoadPicUrl) return Riddle.read(req,res);
+		
 		var ary = [].slice.call(arguments,1);
 
 		var update_func = function(v){
@@ -100,6 +110,7 @@ Riddle.create = function(req,res){
 
 				async.series([
 						function(cb){
+
 							var is = fs.createReadStream(v.PicUrl);
 							var os = fs.createWriteStream(picpath);
 							is.pipe(os);
@@ -136,6 +147,39 @@ Riddle.create = function(req,res){
 		})
 			
 	})
+}
+else if(updateArray.length>0){
+console.log(updateArray)
+
+
+	var async_update_array = [];
+
+	updateArray.forEach(function(v){
+
+		async_update_array.push(
+			(function(mod){
+				var id = mod._id
+				delete mod._id;
+				delete mod.InputTime
+				return function(callback){
+					RiddleDL.ModifyById(id, mod, function(err){
+								callback(err)
+					})
+				}
+			})(v)
+		);
+
+	})
+
+	async.series(async_update_array,function(err){
+		if(err) return res.json(500, { error: err });
+		Riddle.read(req,res);
+	})
+
+
+}
+
+
 	
 }
 
@@ -153,6 +197,18 @@ Riddle.upload = function(req,res){
 	res.send('<script>top.upload_func(false,"'+p+'");</script>')	
 }
 
+Riddle.list_test = function(req, res){
+
+	res.render('pic_test', {});
+}
+
+Riddle.test = function(req, res){
+
+	RiddleDL.FindAllIdByTypeId(global.TypeId,function(err,doc){
+		if(err) return res.json(500, { error: err });
+		res.json(doc)
+	})
+}
 
 
 
