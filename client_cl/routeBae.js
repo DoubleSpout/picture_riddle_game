@@ -7,7 +7,7 @@ var utils = require('../utils/utils.js');
 
 var CheckDeveice = function(req, res, next){ //判断请求头的设备
 
-
+	//console.log(JSON.stringify(req.headers))
 	//res.setHeader("Access-Control-Allow-Origin", "*");
 	//res.setHeader("Access-Control-Allow-Methods", "*");
 	//res.setHeader("Access-Control-Allow-Headers", "*");

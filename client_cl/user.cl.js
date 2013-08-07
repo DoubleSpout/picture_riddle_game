@@ -13,7 +13,7 @@ user.Login = function(req,res){ //用户登录控制器
 	var uobj = {
 		mobile:req.body.mobile,
 		name:req.body.name,
-		ip:req.ip
+		ip:req.headers.clientip || req.ip 
 	}
 
 	var isRegist = true;

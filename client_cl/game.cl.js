@@ -29,7 +29,7 @@ game.Rank = function(req,res){
 game.Start = function(req,res){
 
 	var token = req.query.token;
-	var ip = req.ip;
+	var ip = req.headers.clientip || req.ip;
 	RiddleBL.GetRiddle(token, ip, function(err, doc){
 		if(err) return res.json( utils.AddJsonResult({},0,err) );
 		res.json( utils.AddJsonResult(doc,1) );
